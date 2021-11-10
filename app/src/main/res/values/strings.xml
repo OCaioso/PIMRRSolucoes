@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">ProjetoAndroidPIM</string>
+    <string name="logo">Logo</string>
+    <string name="email">Email</string>
+    <string name="senha">Senha</string>
+    <string name="acessar">Acessar</string>
+    <string name="sair">Sair</string>
+    <string name="bemVindo">Bem vindo, </string>
+    <string name="servicos">Serviços</string>
+    <string name="restaurante">Restaurante</string>
+    <string name="piscina">Piscina</string>
+    <string name="salaof">Salão de Festas</string>
+    <string name="salaoj">Salão de Jogos</string>
+    <string name="spa">SPA</string>
+    <string name="turismo">Turismo</string>
+    <string name="consultar">Consultar Gastos</string>
+    <string name="todo">TODO</string>
+    <string name="despesas">Despesa Total</string>
+    <string name="hospede">Hospede: </string>
+    <string name="quarto">Quarto: </string>
+</resources>

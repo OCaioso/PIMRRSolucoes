@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background"
+        tools:context=".MenuServicos">
+
+        <TextView
+            android:id="@+id/txtBemVindo"
+            style="@style/txtLateral"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/bemVindo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtServicos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="@string/servicos"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/txtBemVindo" />
+
+        <View
+            android:id="@+id/containerMenu"
+            style="@style/ContainerComponent"
+            android:layout_height="570dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtServicos" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnRestauranteMenu"
+            style="@style/Button"
+            android:text="@string/restaurante"
+            app:layout_constraintEnd_toEndOf="@id/containerMenu"
+            app:layout_constraintStart_toStartOf="@id/containerMenu"
+            app:layout_constraintTop_toTopOf="@id/containerMenu" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnPiscinaMenu"
+            style="@style/Button"
+            android:text="@string/piscina"
+            app:layout_constraintEnd_toEndOf="@id/containerMenu"
+            app:layout_constraintStart_toStartOf="@id/containerMenu"
+            app:layout_constraintTop_toBottomOf="@id/btnRestauranteMenu" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSalaoFMenu"
+            style="@style/Button"
+            android:text="@string/salaof"
+            app:layout_constraintEnd_toEndOf="@id/containerMenu"
+            app:layout_constraintStart_toStartOf="@id/containerMenu"
+            app:layout_constraintTop_toBottomOf="@id/btnPiscinaMenu" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSalaoJMenu"
+            style="@style/Button"
+            android:text="@string/salaoj"
+            app:layout_constraintEnd_toEndOf="@id/containerMenu"
+            app:layout_constraintStart_toStartOf="@id/containerMenu"
+            app:layout_constraintTop_toBottomOf="@id/btnSalaoFMenu" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSpaMenu"
+            style="@style/Button"
+            android:text="@string/spa"
+            app:layout_constraintEnd_toEndOf="@id/containerMenu"
+            app:layout_constraintStart_toStartOf="@id/containerMenu"
+            app:layout_constraintTop_toBottomOf="@id/btnSalaoJMenu" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnTurismoMenu"
+            style="@style/Button"
+            android:text="@string/turismo"
+            app:layout_constraintEnd_toEndOf="@id/containerMenu"
+            app:layout_constraintStart_toStartOf="@id/containerMenu"
+            app:layout_constraintTop_toBottomOf="@id/btnSpaMenu" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnConsultaGMenu"
+            style="@style/Button"
+            android:text="@string/consultar"
+            app:layout_constraintEnd_toEndOf="@id/containerMenu"
+            app:layout_constraintStart_toStartOf="@id/containerMenu"
+            app:layout_constraintTop_toBottomOf="@id/btnTurismoMenu" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSairMenu"
+            style="@style/ButtonSair"
+            android:text="@string/sair"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
