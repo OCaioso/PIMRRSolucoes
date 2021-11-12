@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.projetoandroidpim">
+    package="com.example.rrsolucoeshotel">
 
     <application
         android:allowBackup="true"
@@ -8,15 +8,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ProjetoAndroidPIM">
+        android:theme="@style/Theme.RRSolucoesHotel">
         <activity
             android:name=".FormGastos"
             android:exported="true" />
         <activity
-            android:name=".MenuServicos"
-            android:exported="true" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".FormMenuServicos"
             android:exported="true" />
         <activity
             android:name=".FormLogin"

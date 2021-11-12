@@ -1,4 +1,4 @@
-package com.example.projetoandroidpim;
+package com.example.rrsolucoeshotel;
 
 import org.junit.Test;
 

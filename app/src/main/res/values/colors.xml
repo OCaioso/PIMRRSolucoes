@@ -8,8 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="cinzaClaroTela">#f0f0f0</color>
-    <color name="azulClaroTela">#b0c4dd</color>
     <color name="cinzaEscuroTela">#708090</color>
+    <color name="azulClaroTela">#b0c4dd</color>
     <color name="cinzaBotao">#e2e0e1</color>
-
 </resources>

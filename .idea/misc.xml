@@ -3,17 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/ProjetoAndroidPIM/app/src/main/res/drawable/background.xml" value="0.1935185185185185" />
-        <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/ProjetoAndroidPIM/app/src/main/res/drawable/button.xml" value="0.1935185185185185" />
-        <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/ProjetoAndroidPIM/app/src/main/res/drawable/button_sair.xml" value="0.2169230769230769" />
-        <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/ProjetoAndroidPIM/app/src/main/res/drawable/container_componentes.xml" value="0.1935185185185185" />
-        <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/ProjetoAndroidPIM/app/src/main/res/drawable/edit_text.xml" value="0.1935185185185185" />
-        <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/ProjetoAndroidPIM/app/src/main/res/drawable/ic_eye.xml" value="0.2169230769230769" />
-        <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/ProjetoAndroidPIM/app/src/main/res/drawable/sair.xml" value="0.2169230769230769" />
-        <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/ProjetoAndroidPIM/app/src/main/res/layout/activity_form_gastos.xml" value="0.25" />
-        <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/ProjetoAndroidPIM/app/src/main/res/layout/activity_form_login.xml" value="0.25" />
-        <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/ProjetoAndroidPIM/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/ProjetoAndroidPIM/app/src/main/res/layout/activity_menu_servicos.xml" value="0.22" />
+        <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/RRSolucoesHotel/app/src/main/res/drawable/background.xml" value="0.2203125" />
+        <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/RRSolucoesHotel/app/src/main/res/drawable/button.xml" value="0.2203125" />
+        <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/RRSolucoesHotel/app/src/main/res/drawable/button_sair.xml" value="0.2203125" />
+        <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/RRSolucoesHotel/app/src/main/res/drawable/container_componentes.xml" value="0.2203125" />
+        <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/RRSolucoesHotel/app/src/main/res/drawable/edit_text.xml" value="0.2203125" />
+        <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/RRSolucoesHotel/app/src/main/res/layout/activity_form_gastos.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/RRSolucoesHotel/app/src/main/res/layout/activity_form_login.xml" value="0.1" />
+        <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/RRSolucoesHotel/app/src/main/res/layout/activity_form_menu_servicos.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/RRSolucoesHotel/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background"
-        tools:context=".MenuServicos">
+        tools:context=".FormMenuServicos">
 
         <TextView
             android:id="@+id/txtBemVindo"
@@ -25,8 +25,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSairMenu"
+            style="@style/ButtonSair"
+            android:text="@string/sair"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
-            android:id="@+id/txtServicos"
+            android:id="@+id/txtServicosMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
@@ -44,7 +53,7 @@
             android:layout_height="570dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txtServicos" />
+            app:layout_constraintTop_toBottomOf="@id/txtServicosMenu" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnRestauranteMenu"
@@ -65,7 +74,7 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnSalaoFMenu"
             style="@style/Button"
-            android:text="@string/salaof"
+            android:text="@string/salaoF"
             app:layout_constraintEnd_toEndOf="@id/containerMenu"
             app:layout_constraintStart_toStartOf="@id/containerMenu"
             app:layout_constraintTop_toBottomOf="@id/btnPiscinaMenu" />
@@ -73,7 +82,7 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnSalaoJMenu"
             style="@style/Button"
-            android:text="@string/salaoj"
+            android:text="@string/salaoJ"
             app:layout_constraintEnd_toEndOf="@id/containerMenu"
             app:layout_constraintStart_toStartOf="@id/containerMenu"
             app:layout_constraintTop_toBottomOf="@id/btnSalaoFMenu" />
@@ -101,17 +110,6 @@
             app:layout_constraintEnd_toEndOf="@id/containerMenu"
             app:layout_constraintStart_toStartOf="@id/containerMenu"
             app:layout_constraintTop_toBottomOf="@id/btnTurismoMenu" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnSairMenu"
-            style="@style/ButtonSair"
-            android:text="@string/sair"
-            android:clickable="true"
-            android:focusable="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

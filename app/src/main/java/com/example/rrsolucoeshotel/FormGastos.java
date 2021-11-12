@@ -1,19 +1,19 @@
-package com.example.projetoandroidpim;
-
-import static com.example.projetoandroidpim.R.layout.*;
+package com.example.rrsolucoeshotel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MenuServicos extends AppCompatActivity {
+import java.util.Objects;
+
+public class FormGastos extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(activity_menu_servicos);
+        setContentView(R.layout.activity_form_gastos);
 
         //esconde barra de ação
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
     }
 }

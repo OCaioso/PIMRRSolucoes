@@ -13,24 +13,25 @@
         android:background="@drawable/background"
         tools:context=".FormLogin">
 
-        <ImageView
+        <!--ImageView
             android:id="@+id/logoLogin"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_marginTop="24dp"
-            android:contentDescription="@string/logo"
-            android:src="@drawable/logo"
+            app:srcCompat="bota a imagem do logo aqui"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" /-->
 
         <View
             android:id="@+id/containerLogin"
             style="@style/ContainerComponent"
+            android:layout_height="250dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/logoLogin" />
+            app:layout_constraintTop_toTopOf="parent" />
+        <!--substitui app:layout_constraintTop_toTopOf="parent"
+        por app:layout_constraintTop_toBottomOf="logoLogin"-->
 
         <EditText
             android:id="@+id/txtEmailLogin"
@@ -72,13 +73,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/containerLogin" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnSairLogin"
-            style="@style/ButtonSair"
-            android:text="@string/sair"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/progressBarLogin" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

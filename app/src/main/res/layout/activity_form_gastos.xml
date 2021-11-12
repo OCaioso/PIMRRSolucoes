@@ -1,75 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    tools:context=".FormGastos">
+    android:fillViewport="true">
 
-    <TextView
-        android:id="@+id/txtDespesasGasto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="20dp"
-        android:text="@string/despesas"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/txtHospedeGasto"
-        style="@style/txtLateral"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="@string/hospede"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtDespesasGasto" />
-
-    <TextView
-        android:id="@+id/txtQuartoGasto"
-        style="@style/txtLateral"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/quarto"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtHospedeGasto" />
-
-    <View
-        android:id="@+id/containerGastos"
-        style="@style/ContainerComponent"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtQuartoGasto" />
+        android:layout_height="match_parent"
+        android:background="@drawable/background"
+        tools:context=".FormGastos">
 
-    <ListView
-        android:id="@+id/activity_lista_alunos_listview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        app:layout_constraintBottom_toBottomOf="@id/containerGastos"
-        app:layout_constraintEnd_toEndOf="@id/containerGastos"
-        app:layout_constraintStart_toStartOf="@id/containerGastos"
-        app:layout_constraintVertical_bias="0.0" />
+        <TextView
+            android:id="@+id/txtDespesasGasto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/despesas"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnSairGastos"
-        style="@style/ButtonSair"
-        android:layout_marginBottom="45dp"
-        android:text="@string/sair"
-        app:layout_constraintBottom_toTopOf="@+id/containerGastos"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.967"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtDespesasGasto" />
+        <TextView
+            android:id="@+id/txtHospedeGasto"
+            style="@style/txtLateral"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="@string/hospede"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtDespesasGasto" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSairGastos"
+            style="@style/ButtonSair"
+            android:layout_marginBottom="45dp"
+            android:text="@string/sair"
+            app:layout_constraintBottom_toTopOf="@+id/containerGastos"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.967"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtDespesasGasto" />
+
+        <TextView
+            android:id="@+id/txtQuartoGasto"
+            style="@style/txtLateral"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/quarto"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtHospedeGasto" />
+
+        <View
+            android:id="@+id/containerGastos"
+            style="@style/ContainerComponent"
+            android:layout_height="500dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtQuartoGasto" />
+
+        <ListView
+            android:id="@+id/activity_lista_alunos_listview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            app:layout_constraintBottom_toBottomOf="@id/containerGastos"
+            app:layout_constraintEnd_toEndOf="@id/containerGastos"
+            app:layout_constraintStart_toStartOf="@id/containerGastos" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
