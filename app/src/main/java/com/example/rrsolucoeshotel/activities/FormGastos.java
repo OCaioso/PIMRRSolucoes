@@ -1,8 +1,10 @@
-package com.example.rrsolucoeshotel;
+package com.example.rrsolucoeshotel.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.rrsolucoeshotel.R;
 
 import java.util.Objects;
 

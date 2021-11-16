@@ -10,13 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RRSolucoesHotel">
         <activity
-            android:name=".FormGastos"
+            android:name=".activities.FormGastos"
             android:exported="true" />
         <activity
-            android:name=".FormMenuServicos"
+            android:name=".activities.FormMenuServicos"
             android:exported="true" />
         <activity
-            android:name=".FormLogin"
+            android:name=".activities.FormLogin"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,5 +25,9 @@
             </intent-filter>
         </activity>
     </application>
+    <!--permissões necessárias para conectar o banco de dados online-->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!--uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/-->
 
 </manifest>
