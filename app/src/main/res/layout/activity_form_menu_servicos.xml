@@ -8,6 +8,7 @@
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ConstraintLayout_menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background"
@@ -27,9 +28,9 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnSairMenu"
             style="@style/ButtonSair"
-            android:text="@string/sair"
             android:clickable="true"
             android:focusable="true"
+            android:text="@string/sair"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

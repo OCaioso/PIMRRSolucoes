@@ -8,6 +8,7 @@
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ConstraintLayout_login"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background"
@@ -40,10 +41,10 @@
             android:hint="@string/email"
             android:importantForAutofill="no"
             android:inputType="textEmailAddress"
+            android:maxLength="25"
             app:layout_constraintEnd_toEndOf="@id/containerLogin"
             app:layout_constraintStart_toStartOf="@id/containerLogin"
-            app:layout_constraintTop_toTopOf="@id/containerLogin"
-            android:maxLength="25" />
+            app:layout_constraintTop_toTopOf="@id/containerLogin" />
 
         <EditText
             android:id="@+id/txtSenhaLogin"
@@ -52,10 +53,10 @@
             android:hint="@string/senha"
             android:importantForAutofill="no"
             android:inputType="numberPassword"
+            android:maxLength="11"
             app:layout_constraintEnd_toEndOf="@id/containerLogin"
             app:layout_constraintStart_toStartOf="@id/containerLogin"
-            app:layout_constraintTop_toBottomOf="@id/txtEmailLogin"
-            android:maxLength="11"/>
+            app:layout_constraintTop_toBottomOf="@id/txtEmailLogin" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnAcessarLogin"
@@ -70,8 +71,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:visibility="invisible"
             android:indeterminateTint="@color/teal_700"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/containerLogin" />
