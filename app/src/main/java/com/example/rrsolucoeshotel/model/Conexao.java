@@ -43,3 +43,37 @@ public class Conexao {
         return conexao;
     }
 }
+
+//vai que eu precise então ta ai abaixo um modelo de conexão
+ /*
+        Connection conexaoBD = Conexao.Conectar(); //tirei a necessidade de usar getApplicationContext() no método Conectar();
+        try {
+
+            if (conexaoBD != null) {
+                if (!conexaoBD.isClosed())
+                    texto.setText("CONEXÃO REALIZADA COM SUCESSO!!!");
+                else
+                    texto.setText("CONEXÃO FECHADA!!!");
+            }else{
+                texto.setText("CONEXÃO NULA, NÃO REALIZADA!!!");
+            }
+
+            String queryTeste = "SELECT * FROM LOGIN_Hospedes";
+
+            PreparedStatement queryTestada = conexaoBD.prepareStatement(queryTeste);
+
+            ResultSet resultadoQuery = queryTestada.executeQuery();
+
+            while(resultadoQuery.next()){
+                Log.w("print", "printou");
+                texto.setText(resultadoQuery.getString(1));
+            }
+
+            queryTestada.close();
+            conexaoBD.close();
+
+        } catch (SQLException e) {
+            //e.printStackTrace();
+            Log.w("CONEXÃO FALHOU!!!", e.getMessage());
+        }
+        */
