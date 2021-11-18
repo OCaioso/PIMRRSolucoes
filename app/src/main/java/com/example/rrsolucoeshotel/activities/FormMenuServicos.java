@@ -1,5 +1,7 @@
 package com.example.rrsolucoeshotel.activities;
 
+import static com.example.rrsolucoeshotel.activities.ConstantesActivities.MSG_VOLTAR;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -12,7 +14,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.rrsolucoeshotel.R;
 import com.example.rrsolucoeshotel.model.BDHelper;
@@ -22,13 +23,15 @@ import java.util.Objects;
 
 public class FormMenuServicos extends AppCompatActivity {
 
-    private TextView edBVindo;
-    private Button btSair;
+    private TextView txBVindo;
+    private Button btSair, btGMenu;
 
     boolean botaoVoltarClicadoDuasVezes;
+    private String nomeHospede;
     private String emailHospede;
-    private static final String TXT_BVINDO = "Bem vindo, ";
-    private static final String MSG_VOLTAR = "Toque novamente para voltar";
+    private String senhaHospede;
+
+    private final static String TXT_BVINDO = "Bem vindo, ";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +42,9 @@ public class FormMenuServicos extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).hide();
 
         IniciarComponentes();
-        adicionarNomeHospede();
 
         ClicarSairFormMenuServicos();
+        ClicarGastos();
     }
 
     @Override
@@ -53,23 +56,37 @@ public class FormMenuServicos extends AppCompatActivity {
 
         ConfiguraClicarDuasVezes();
         VerificaCliqueDuplo();
+
+    }
+
+    private void ConfiguraClicarDuasVezes() {
+        ConstraintLayout view = findViewById(R.id.ConstraintLayout_login);
+
+        this.botaoVoltarClicadoDuasVezes = true;
+        SnackbarMsg(view);
     }
 
     private void VerificaCliqueDuplo() {
         new Handler().postDelayed(() -> botaoVoltarClicadoDuasVezes = false, 2000);
     }
 
-    private void ConfiguraClicarDuasVezes() {
-        ConstraintLayout layout = findViewById(R.id.ConstraintLayout_login);
-
-        this.botaoVoltarClicadoDuasVezes = true;
-        SnackbarMsg(layout);
+    private void ClicarSairFormMenuServicos() {
+        btSair.setOnClickListener(view -> CriaCaixaDialogo());
     }
 
-    private void ClicarSairFormMenuServicos() {
-        btSair.setOnClickListener(view -> {
-            CriaCaixaDialogo();
+    private void ClicarGastos() {
+        btGMenu.setOnClickListener(view -> {
+            IrFormGastos(nomeHospede, senhaHospede);
         });
+    }
+
+    private void IrFormGastos(String nome, String cpf) {
+        Intent irGMenu = new Intent(getApplicationContext(),
+                FormGastos.class);
+        irGMenu.putExtra("nomeHospede", nome); //passando os dados do email para próxima atcivity
+        irGMenu.putExtra("cpfHospede", cpf);
+        //finish();
+        startActivity(irGMenu);
     }
 
     private void CriaCaixaDialogo() {
@@ -93,16 +110,21 @@ public class FormMenuServicos extends AppCompatActivity {
     }
 
     private void IniciarComponentes() {
-        edBVindo = findViewById(R.id.txtBemVindo);
-        btSair = findViewById(R.id.btnSairMenu);
+        BDHelper bancoDados = new BDHelper();
         emailHospede = getIntent().getStringExtra("emailUsado");
+        senhaHospede = getIntent().getStringExtra("senhaUsado");
+        nomeHospede = bancoDados.RetornarNomeHospede(emailHospede, senhaHospede);
+
+        txBVindo = findViewById(R.id.txtBemVindo);
+        btSair = findViewById(R.id.btnSairMenu);
+        btGMenu = findViewById(R.id.btnConsultaGMenu);
         botaoVoltarClicadoDuasVezes = false;
+
+        AdicionarNomeHospede();
     }
 
-    private void adicionarNomeHospede() {
-        BDHelper bancoDados = new BDHelper();
-
-        edBVindo.setText(TXT_BVINDO + bancoDados.RetornarNomeCliente(emailHospede));
+    private void AdicionarNomeHospede() {
+        txBVindo.setText(TXT_BVINDO + nomeHospede);
     }
 
     private void SnackbarMsg(View view) {

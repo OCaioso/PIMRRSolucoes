@@ -93,7 +93,7 @@ public class FormLogin extends AppCompatActivity {
 
         if (bancoDados.VerificarEmail(email)) {
             if (bancoDados.VerificarSenhaDoEmail(email, senha)) {
-                EfetuarLogin(email);
+                EfetuarLogin(email, senha);
             } else {
                 //Msg erro com a senha
                 SnackbarMsgs(view, 2);
@@ -105,10 +105,11 @@ public class FormLogin extends AppCompatActivity {
         }
     }
 
-    private void EfetuarLogin(String email) {
+    private void EfetuarLogin(String email, String senha) {
         Intent logar = new Intent(getApplicationContext(),
                 FormMenuServicos.class);
         logar.putExtra("emailUsado", email); //passando os dados do email para próxima atcivity
+        logar.putExtra("senhaUsado", senha);
         //finish();
         startActivity(logar);
     }

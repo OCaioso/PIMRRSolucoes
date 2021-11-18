@@ -13,7 +13,5 @@
     <string name="turismo">Turismo</string>
     <string name="consultar">Consultar Gastos</string>
     <string name="despesas">Despesas</string>
-    <string name="hospede">Hospede: </string>
-    <string name="quarto">Quarto: </string>
     <string name="iconeHotel">Hotel</string>
 </resources>
