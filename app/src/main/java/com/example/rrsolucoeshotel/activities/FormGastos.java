@@ -61,7 +61,7 @@ public class FormGastos extends AppCompatActivity {
     }
 
     private void ConfiguraClicarDuasVezes() {
-        ConstraintLayout view = findViewById(R.id.ConstraintLayout_login);
+        ConstraintLayout view = findViewById(R.id.ConstraintLayout_gastos);
 
         this.botaoVoltarClicadoDuasVezes = true;
         SnackbarMsg(view);

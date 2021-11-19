@@ -41,7 +41,6 @@ public class FormMenuServicos extends AppCompatActivity {
         //esconde barra de ação
         Objects.requireNonNull(getSupportActionBar()).hide();
 
-
         IniciarComponentes();
 
         ClicarSairFormMenuServicos();
@@ -57,18 +56,17 @@ public class FormMenuServicos extends AppCompatActivity {
 
         ConfiguraClicarDuasVezes();
         VerificaCliqueDuplo();
-
-    }
-
-    private void ConfiguraClicarDuasVezes() {
-        ConstraintLayout view = findViewById(R.id.ConstraintLayout_login);
-
-        this.botaoVoltarClicadoDuasVezes = true;
-        SnackbarMsg(view);
     }
 
     private void VerificaCliqueDuplo() {
         new Handler().postDelayed(() -> botaoVoltarClicadoDuasVezes = false, 2000);
+    }
+
+    private void ConfiguraClicarDuasVezes() {
+        ConstraintLayout layout = findViewById(R.id.ConstraintLayout_menu);
+
+        this.botaoVoltarClicadoDuasVezes = true;
+        SnackbarMsg(layout);
     }
 
     private void ClicarSairFormMenuServicos() {
