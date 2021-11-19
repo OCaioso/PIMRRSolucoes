@@ -178,7 +178,7 @@ public class BDHelper {
         int quantidadeH = 0;
         Date dataConsumoH = null;
 
-        String querySelect = "SELECT c.Nome, c.CPF, c.Discricao, c.Valor_Produto, c.Valor_Total, " +
+        String querySelect = "SELECT c.Nome, c.CPF, c.Descricao, c.Valor_Produto, c.Valor_Total, " +
                 "c.Quantidade, c.Data_Consumo FROM Consumos c LEFT JOIN Hospedes h " +
                 "ON h.Nome = c.Nome AND h.CPF = c.CPF ";
         querySelect+= "WHERE c.Nome = ? AND c.CPF = ?;";
@@ -196,7 +196,7 @@ public class BDHelper {
                 Log.w("valores do resultset", "Nome: "+ nomeH);
                 cpfH = resultadoQuery.getString("CPF");
                 Log.w("valores do resultset", "CPF: "+ cpfH);
-                descricaoH = resultadoQuery.getString("Discricao");
+                descricaoH = resultadoQuery.getString("Descricao");
                 Log.w("valores do resultset", "Descricao: "+ descricaoH);
                 vProdutoH = Double.parseDouble(resultadoQuery.getString("Valor_Produto"));
                 Log.w("valores do resultset", "Valor_Produto: "+ vProdutoH);
