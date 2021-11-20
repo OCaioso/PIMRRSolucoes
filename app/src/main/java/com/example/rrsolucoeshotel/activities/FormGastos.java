@@ -6,6 +6,9 @@ import static com.example.rrsolucoeshotel.activities.ConstantesActivities.TXT_QU
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -15,13 +18,17 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.rrsolucoeshotel.R;
-import com.example.rrsolucoeshotel.model.BDHelper;
+import com.example.rrsolucoeshotel.adapter.GastosAdapter;
+import com.example.rrsolucoeshotel.model.BDQuery;
 import com.example.rrsolucoeshotel.model.DadosHospede;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class FormGastos extends AppCompatActivity {
@@ -29,10 +36,14 @@ public class FormGastos extends AppCompatActivity {
     private TextView txHospede, txQuarto;
     private Button btSair;
 
+    private RecyclerView recyclerView;
+    private GastosAdapter gastosAdapter;
+
+    private List<DadosHospede> listaDadosHospede = new ArrayList<>();
+    private final DadosHospede dadosHospede = new DadosHospede();
+
     boolean botaoVoltarClicadoDuasVezes;
     private String nomeHospede, cpfHospede, quartoHospede;
-
-    private DadosHospede dadosHospede = new DadosHospede();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +54,11 @@ public class FormGastos extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).hide();
 
         IniciarComponentes();
-        SalvarDadosHospedeClasse();
+        //SalvarDadosHospedeClasse();
 
         ClicarSairFormGastos();
-        PegarDadosHospedeParaTela();
+        //PegarDadosHospedeParaTela();
+        CarregarDadosParaLista();
     }
 
     @Override
@@ -103,15 +115,14 @@ public class FormGastos extends AppCompatActivity {
     }
 
     private void IniciarComponentes() {
-        BDHelper bancoDados = new BDHelper();
-
         nomeHospede = getIntent().getStringExtra("nomeHospede");
         cpfHospede = getIntent().getStringExtra("cpfHospede");
-        quartoHospede = bancoDados.RetornarQuartoHospede(nomeHospede, cpfHospede);
+        quartoHospede = getIntent().getStringExtra("quartoHospede");
 
         txHospede = findViewById(R.id.txtHospedeGasto);
         txQuarto = findViewById(R.id.txtQuartoGasto);
         btSair = findViewById(R.id.btnSairGastos);
+        recyclerView = findViewById(R.id.RecyclerView_gastos);
         botaoVoltarClicadoDuasVezes = false;
 
         AdicionarNomeQuartoATela();
@@ -122,13 +133,22 @@ public class FormGastos extends AppCompatActivity {
         txQuarto.setText(TXT_QUARTOS + quartoHospede);
     }
 
-    private void SalvarDadosHospedeClasse() {
-        BDHelper bancoDados = new BDHelper();
+    private void CarregarDadosParaLista() {
+        //listar tarefas
+        BDQuery bancoDados = new BDQuery();
 
-        bancoDados.SalvarGastosEmDadosHospede(dadosHospede, nomeHospede, cpfHospede);
-    }
+        listaDadosHospede = bancoDados.ListarGastosEmDadosHospede(listaDadosHospede, nomeHospede, cpfHospede);
 
-    private void PegarDadosHospedeParaTela() {
+        //Configurar um adapter
+        gastosAdapter = new GastosAdapter(listaDadosHospede);
 
+        //Configurar recyclerview
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(layoutManager);
+        //tamanho fixo
+        recyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(),
+                LinearLayout.HORIZONTAL)); //criando linha
+        recyclerView.setAdapter(gastosAdapter);
+        Log.w("criei", "criado");
     }
 }
