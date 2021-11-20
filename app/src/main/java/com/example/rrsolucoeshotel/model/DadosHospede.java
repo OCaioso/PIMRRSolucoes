@@ -4,56 +4,49 @@ import java.util.Date;
 
 public class DadosHospede {
 
-    private String Descricao;
-    private double Valor_Produto, Valor_Total;
-    private int Quantidade;
-    private Date Data_Consumo;
-
-    //private double Valor_Total = Quantidade * Valor_Produto;
+    private String Descricao, Valor_Produto, Valor_Total, Quantidade, Total_Final_Despesas;
 
     public DadosHospede(){
 
-    }
-
-    public void setDescricao(String descricao) {
-        Descricao = descricao;
-    }
-
-    public void setValor_Produto(double valor_Produto) {
-        Valor_Produto = valor_Produto;
-    }
-
-    public void setValor_Total(double valor_Total) {
-        Valor_Total = valor_Total;
-    }
-
-    public void setQuantidade(int quantidade) {
-        Quantidade = quantidade;
-    }
-
-    public void setData_Consumo(Date data_Consumo) {
-        Data_Consumo = data_Consumo;
     }
 
     public String getDescricao() {
         return Descricao;
     }
 
-    public double getValor_Produto() {
+    public void setDescricao(String descricao) {
+        Descricao = descricao;
+    }
+
+    public String getValor_Produto() {
         return Valor_Produto;
     }
 
-    public double getValor_Total() {
+    public void setValor_Produto(String valor_Produto) {
+        Valor_Produto = valor_Produto;
+    }
+
+    public String getValor_Total() {
         return Valor_Total;
     }
 
-    public int getQuantidade() {
+    public void setValor_Total(String valor_Total) {
+        Valor_Total = valor_Total;
+    }
+
+    public String getQuantidade() {
         return Quantidade;
     }
 
-    public Date getData_Consumo() {
-        return Data_Consumo;
+    public void setQuantidade(String quantidade) {
+        Quantidade = quantidade;
     }
 
+    public String getTotal_Final_Despesas() {
+        return Total_Final_Despesas;
+    }
 
+    public void setTotal_Final_Despesas(String total_Final_Despesas) {
+        Total_Final_Despesas = total_Final_Despesas;
+    }
 }

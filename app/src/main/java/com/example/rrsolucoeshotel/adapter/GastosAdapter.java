@@ -35,9 +35,10 @@ public class GastosAdapter extends RecyclerView.Adapter<GastosAdapter.MinhaViewH
     public void onBindViewHolder(@NonNull MinhaViewHolder holder, int position) {
 
         DadosHospede dadosHospede = listaDadosH.get(position);
-        holder.dadosGasto.setText(dadosHospede.getDescricao() + " " + dadosHospede.getQuantidade()+
-                " " + dadosHospede.getValor_Produto() + " "+ dadosHospede.getValor_Total()+ " "+
-                dadosHospede.getData_Consumo());
+        holder.dadosDescricao.setText(dadosHospede.getDescricao());
+        holder.dadosValor.setText("R$: " + dadosHospede.getValor_Produto());
+        holder.dadosQuantidade.setText(dadosHospede.getQuantidade());
+        holder.dadosVTotal.setText("R$: " + dadosHospede.getValor_Total());
     }
 
     @Override
@@ -47,12 +48,15 @@ public class GastosAdapter extends RecyclerView.Adapter<GastosAdapter.MinhaViewH
 
     public class MinhaViewHolder extends RecyclerView.ViewHolder{
 
-        TextView dadosGasto;
+        TextView dadosDescricao, dadosQuantidade, dadosValor, dadosVTotal;
 
         public MinhaViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            dadosGasto = itemView.findViewById(R.id.txtListaGasto);
+            dadosDescricao = itemView.findViewById(R.id.txtDescricao);
+            dadosValor = itemView.findViewById(R.id.txtValor);
+            dadosQuantidade = itemView.findViewById(R.id.txtQuantidade);
+            dadosVTotal = itemView.findViewById(R.id.txtV_total);
         }
     }
 }

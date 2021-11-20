@@ -174,14 +174,11 @@ public class BDQuery {
 
     public List<DadosHospede> ListarGastosEmDadosHospede(List<DadosHospede> listaDH, String nome, String cpf){
         Connection conexaoBD5 = Conectar();
-        String descricaoH = "";
-        double vProdutoH = 0, vTotalH = 0;
         int quantidadeH = 0;
-        Date dataConsumoH = null;
+        double vProdutoH = 0, vTotalH = 0, totalFinalDespesas = 0;
 
-        String querySelect = "SELECT c.Descricao, c.Valor_Produto, c.Valor_Total, c.Quantidade," +
-                " c.Data_Consumo FROM Consumos c LEFT JOIN Hospedes h " +
-                "ON h.Nome = c.Nome AND h.CPF = c.CPF ";
+        String querySelect = "SELECT c.Descricao, c.Valor_Produto, c.Quantidade "+
+                "FROM Consumos c LEFT JOIN Hospedes h ON c.Nome = h.Nome AND c.CPF = h.CPF ";
         querySelect+= "WHERE c.Nome = ? AND c.CPF = ?;";
 
         try {
@@ -196,22 +193,32 @@ public class BDQuery {
                 DadosHospede dadosHospede = new DadosHospede();
 
                 dadosHospede.setDescricao(resultadoQuery.getString("Descricao"));
-                Log.w("valores do resultset", "Descricao: "+ descricaoH);
-                dadosHospede.setValor_Produto(Double.parseDouble(resultadoQuery.getString(
-                        "Valor_Produto")));
+                Log.w("valores do resultset", "Valor_Produto: "+ dadosHospede.getDescricao());
+
+                dadosHospede.setValor_Produto(resultadoQuery.getString("Valor_Produto"));
+                Log.w("valores do resultset", "Valor_Produto: "+ dadosHospede.getValor_Produto());
+
+                vProdutoH = Double.parseDouble(resultadoQuery.getString("Valor_Produto"));
                 Log.w("valores do resultset", "Valor_Produto: "+ vProdutoH);
-                dadosHospede.setValor_Total(Double.parseDouble(resultadoQuery.getString(
-                        "Valor_Total")));
-                Log.w("valores do resultset", "Valor_Total: "+ vTotalH);
-                dadosHospede.setQuantidade(Integer.parseInt(resultadoQuery.getString(
-                        "Quantidade")));
+
+                dadosHospede.setQuantidade(resultadoQuery.getString("Quantidade"));
+                Log.w("valores do resultset", "Valor_Produto: "+ dadosHospede.getQuantidade());
+
+                quantidadeH = Integer.parseInt(resultadoQuery.getString("Quantidade"));
                 Log.w("valores do resultset", "Quantidade: "+ quantidadeH);
-                dadosHospede.setData_Consumo(Date.valueOf(resultadoQuery.getString(
-                        "Data_Consumo")));
-                Log.w("valores do resultset", "Data_Consumo: "+ dataConsumoH);
+
+                vTotalH = quantidadeH * vProdutoH;
+                dadosHospede.setValor_Total(String.valueOf(vTotalH));
+                Log.w("valores do resultset", "Valor_Total: "+ vTotalH);
+
+                totalFinalDespesas += vTotalH;
+                dadosHospede.setTotal_Final_Despesas(String.valueOf(totalFinalDespesas));
+                Log.w("TotalFinalDespesas: ", String.valueOf(totalFinalDespesas));
 
                 listaDH.add(dadosHospede);
             }
+
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

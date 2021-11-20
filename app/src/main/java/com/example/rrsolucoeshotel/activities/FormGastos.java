@@ -33,14 +33,15 @@ import java.util.Objects;
 
 public class FormGastos extends AppCompatActivity {
 
-    private TextView txHospede, txQuarto;
+    private TextView txHospede, txQuarto, txTotalGastoHospede;
     private Button btSair;
 
     private RecyclerView recyclerView;
     private GastosAdapter gastosAdapter;
 
     private List<DadosHospede> listaDadosHospede = new ArrayList<>();
-    private final DadosHospede dadosHospede = new DadosHospede();
+    private DadosHospede dadosHospede = new DadosHospede();
+    private final String TXT_TOTAL_GASTO = "TOTAL PARCIAL: R$ ";
 
     boolean botaoVoltarClicadoDuasVezes;
     private String nomeHospede, cpfHospede, quartoHospede;
@@ -53,12 +54,11 @@ public class FormGastos extends AppCompatActivity {
         //esconde barra de ação
         Objects.requireNonNull(getSupportActionBar()).hide();
 
+
         IniciarComponentes();
-        //SalvarDadosHospedeClasse();
+        CarregarDadosParaLista();
 
         ClicarSairFormGastos();
-        //PegarDadosHospedeParaTela();
-        CarregarDadosParaLista();
     }
 
     @Override
@@ -121,16 +121,18 @@ public class FormGastos extends AppCompatActivity {
 
         txHospede = findViewById(R.id.txtHospedeGasto);
         txQuarto = findViewById(R.id.txtQuartoGasto);
+        txTotalGastoHospede = findViewById(R.id.txtTotalGastoHospede);
         btSair = findViewById(R.id.btnSairGastos);
         recyclerView = findViewById(R.id.RecyclerView_gastos);
         botaoVoltarClicadoDuasVezes = false;
 
-        AdicionarNomeQuartoATela();
+
     }
 
-    private void AdicionarNomeQuartoATela() {
+    private void AdicionarNomeQuartoATela(DadosHospede d) {
         txHospede.setText(TXT_HOSPEDE + nomeHospede);
         txQuarto.setText(TXT_QUARTOS + quartoHospede);
+        txTotalGastoHospede.setText(TXT_TOTAL_GASTO + d.getTotal_Final_Despesas());
     }
 
     private void CarregarDadosParaLista() {
@@ -138,6 +140,8 @@ public class FormGastos extends AppCompatActivity {
         BDQuery bancoDados = new BDQuery();
 
         listaDadosHospede = bancoDados.ListarGastosEmDadosHospede(listaDadosHospede, nomeHospede, cpfHospede);
+        dadosHospede = listaDadosHospede.get(listaDadosHospede.size()-1);
+        AdicionarNomeQuartoATela(dadosHospede);
 
         //Configurar um adapter
         gastosAdapter = new GastosAdapter(listaDadosHospede);
@@ -149,6 +153,5 @@ public class FormGastos extends AppCompatActivity {
         recyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(),
                 LinearLayout.HORIZONTAL)); //criando linha
         recyclerView.setAdapter(gastosAdapter);
-        Log.w("criei", "criado");
     }
 }
