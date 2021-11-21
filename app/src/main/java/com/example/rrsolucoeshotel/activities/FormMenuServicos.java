@@ -2,6 +2,7 @@ package com.example.rrsolucoeshotel.activities;
 
 import static com.example.rrsolucoeshotel.activities.ConstantesActivities.MSG_VOLTAR;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -34,6 +35,8 @@ public class FormMenuServicos extends AppCompatActivity {
 
     private final static String TXT_BVINDO = "Bem vindo, ";
 
+    private Button botaoRestaurante;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +49,15 @@ public class FormMenuServicos extends AppCompatActivity {
 
         ClicarSairFormMenuServicos();
         ClicarGastos();
+
+        botaoRestaurante = findViewById(R.id.btnRestauranteMenu);
+        botaoRestaurante.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FormMenuServicos.this, RestauranteActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

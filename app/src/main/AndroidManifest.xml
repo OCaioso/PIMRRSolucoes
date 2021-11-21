@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RRSolucoesHotel">
         <activity
+            android:name=".activities.RestauranteActivity"
+            android:exported="true" />
+        <activity
             android:name=".activities.FormGastos"
             android:exported="true" />
         <activity
