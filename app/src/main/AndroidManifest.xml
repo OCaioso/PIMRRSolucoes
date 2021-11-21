@@ -30,13 +30,13 @@
             android:name=".activities.RestauranteActivity"
             android:exported="true" />
         <activity
-            android:name=".activities.FormGastos"
+            android:name=".activities.GastosHospedeActivity"
             android:exported="true" />
         <activity
-            android:name=".activities.FormMenuServicos"
+            android:name=".activities.MenuServicosActivity"
             android:exported="true" />
         <activity
-            android:name=".activities.FormLogin"
+            android:name=".activities.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

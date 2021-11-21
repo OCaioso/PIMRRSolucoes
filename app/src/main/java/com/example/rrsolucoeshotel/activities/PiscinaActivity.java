@@ -8,7 +8,7 @@ import android.os.Bundle;
 
 import com.example.rrsolucoeshotel.R;
 import com.example.rrsolucoeshotel.adapter.AdapterProdutos;
-import com.example.rrsolucoeshotel.model.produtosRestaurante;
+import com.example.rrsolucoeshotel.model.ProdutosServicosHotel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,14 +16,17 @@ import java.util.List;
 public class PiscinaActivity extends AppCompatActivity {
 
     private RecyclerView recyclerProdutos;
-    private List<produtosRestaurante> listaPiscina = new ArrayList<>();
+    private List<ProdutosServicosHotel> listaPiscina = new ArrayList<>();
+
+    private String nomeHospede, cpfHospede;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_piscina);
 
-        recyclerProdutos = findViewById(R.id.recyclerProdutos2);
+
+        IniciarComponentes();
 
         // Criar listagem de Produtos
         this.criarProdutosPiscina();
@@ -40,40 +43,45 @@ public class PiscinaActivity extends AppCompatActivity {
         recyclerProdutos.setLayoutManager(layoutManager);
         recyclerProdutos.setHasFixedSize(true); // Tamanho fixo para otimizar o layout
         recyclerProdutos.setAdapter( adapter2 );
+    }
 
+    private void IniciarComponentes() {
+        nomeHospede = getIntent().getStringExtra("nomeHospede");
+        cpfHospede = getIntent().getStringExtra("cpfHospede");
 
+        recyclerProdutos = findViewById(R.id.recyclerViewPiscina);
     }
 
     private void criarProdutosPiscina() {
 
-        produtosRestaurante produto = new produtosRestaurante("PISCINA", "22", "Descrição teste");
+        ProdutosServicosHotel produto = new ProdutosServicosHotel("PISCINA", "22", "Descrição teste");
         this.listaPiscina.add( produto );
 
-        produto = new produtosRestaurante("PISCINA", "32", "Descrição teste");
+        produto = new ProdutosServicosHotel("PISCINA", "32", "Descrição teste");
         this.listaPiscina.add( produto );
 
-        produto = new produtosRestaurante("Pizza de Quatro Queijos", "20", "Descrição teste");
+        produto = new ProdutosServicosHotel("Pizza de Quatro Queijos", "20", "Descrição teste");
         this.listaPiscina.add( produto );
 
-        produto = new produtosRestaurante("Pizza de Hot Dogs", "18", "Descrição teste");
+        produto = new ProdutosServicosHotel("Pizza de Hot Dogs", "18", "Descrição teste");
         this.listaPiscina.add( produto );
 
-        produto = new produtosRestaurante("Risoto de Limão Siciliano", "40", "Descrição teste");
+        produto = new ProdutosServicosHotel("Risoto de Limão Siciliano", "40", "Descrição teste");
         this.listaPiscina.add( produto );
 
-        produto = new produtosRestaurante("Lasagna alla Bolognesa", "28", "Descrição teste");
+        produto = new ProdutosServicosHotel("Lasagna alla Bolognesa", "28", "Descrição teste");
         this.listaPiscina.add( produto );
 
-        produto = new produtosRestaurante("Lasagna Quatro Queijos", "28", "Descrição teste");
+        produto = new ProdutosServicosHotel("Lasagna Quatro Queijos", "28", "Descrição teste");
         this.listaPiscina.add( produto );
 
-        produto = new produtosRestaurante("Coca-cola", "6", "Descrição teste");
+        produto = new ProdutosServicosHotel("Coca-cola", "6", "Descrição teste");
         this.listaPiscina.add( produto );
 
-        produto = new produtosRestaurante("Sprite", "6", "Descrição teste");
+        produto = new ProdutosServicosHotel("Sprite", "6", "Descrição teste");
         this.listaPiscina.add( produto );
 
-        produto = new produtosRestaurante("Fanta", "6", "Descrição teste");
+        produto = new ProdutosServicosHotel("Fanta", "6", "Descrição teste");
         this.listaPiscina.add( produto );
     }
 }

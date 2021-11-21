@@ -8,7 +8,7 @@ import android.os.Bundle;
 
 import com.example.rrsolucoeshotel.R;
 import com.example.rrsolucoeshotel.adapter.AdapterProdutos;
-import com.example.rrsolucoeshotel.model.produtosRestaurante;
+import com.example.rrsolucoeshotel.model.ProdutosServicosHotel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,9 @@ import java.util.List;
 public class SalaoJogosActivity extends AppCompatActivity {
 
     private RecyclerView recyclerProdutos;
-    private List<produtosRestaurante> listaSalaojogos= new ArrayList<>();
+    private List<ProdutosServicosHotel> listaSalaojogos= new ArrayList<>();
+
+    private String nomeHospede, cpfHospede;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +26,7 @@ public class SalaoJogosActivity extends AppCompatActivity {
         setContentView(R.layout.activity_salao_jogos);
 
 
-
-
-
-
-        recyclerProdutos = findViewById(R.id.recyclerViewSalaoJogos);
+        IniciarComponentes();
 
         // Criar listagem de Produtos
         this.criarProdutosSalaoJogos();
@@ -45,40 +43,45 @@ public class SalaoJogosActivity extends AppCompatActivity {
         recyclerProdutos.setLayoutManager(layoutManager);
         recyclerProdutos.setHasFixedSize(true); // Tamanho fixo para otimizar o layout
         recyclerProdutos.setAdapter( adapter );
+    }
 
+    private void IniciarComponentes() {
+        nomeHospede = getIntent().getStringExtra("nomeHospede");
+        cpfHospede = getIntent().getStringExtra("cpfHospede");
 
+        recyclerProdutos = findViewById(R.id.recyclerViewSalaoJogos);
     }
 
     public void criarProdutosSalaoJogos(){
 
-        produtosRestaurante produto = new produtosRestaurante("listaSalaojogos", "22", "Descrição teste");
+        ProdutosServicosHotel produto = new ProdutosServicosHotel("listaSalaojogos", "22", "Descrição teste");
         this.listaSalaojogos.add( produto );
 
-        produto = new produtosRestaurante("listaSalaojogos", "32", "Descrição teste");
+        produto = new ProdutosServicosHotel("listaSalaojogos", "32", "Descrição teste");
         this.listaSalaojogos.add( produto );
 
-        produto = new produtosRestaurante("listaSalaojogos", "20", "Descrição teste");
+        produto = new ProdutosServicosHotel("listaSalaojogos", "20", "Descrição teste");
         this.listaSalaojogos.add( produto );
 
-        produto = new produtosRestaurante("Pizza de Hot Dogs", "18", "Descrição teste");
+        produto = new ProdutosServicosHotel("Pizza de Hot Dogs", "18", "Descrição teste");
         this.listaSalaojogos.add( produto );
 
-        produto = new produtosRestaurante("Risoto de Limão Siciliano", "40", "Descrição teste");
+        produto = new ProdutosServicosHotel("Risoto de Limão Siciliano", "40", "Descrição teste");
         this.listaSalaojogos.add( produto );
 
-        produto = new produtosRestaurante("Lasagna alla Bolognesa", "28", "Descrição teste");
+        produto = new ProdutosServicosHotel("Lasagna alla Bolognesa", "28", "Descrição teste");
         this.listaSalaojogos.add( produto );
 
-        produto = new produtosRestaurante("Lasagna Quatro Queijos", "28", "Descrição teste");
+        produto = new ProdutosServicosHotel("Lasagna Quatro Queijos", "28", "Descrição teste");
         this.listaSalaojogos.add( produto );
 
-        produto = new produtosRestaurante("Coca-cola", "6", "Descrição teste");
+        produto = new ProdutosServicosHotel("Coca-cola", "6", "Descrição teste");
         this.listaSalaojogos.add( produto );
 
-        produto = new produtosRestaurante("Sprite", "6", "Descrição teste");
+        produto = new ProdutosServicosHotel("Sprite", "6", "Descrição teste");
         this.listaSalaojogos.add( produto );
 
-        produto = new produtosRestaurante("Fanta", "6", "Descrição teste");
+        produto = new ProdutosServicosHotel("Fanta", "6", "Descrição teste");
         this.listaSalaojogos.add( produto );
 
 

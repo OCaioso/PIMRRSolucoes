@@ -9,15 +9,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rrsolucoeshotel.R;
-import com.example.rrsolucoeshotel.model.produtosRestaurante;
+import com.example.rrsolucoeshotel.model.ProdutosServicosHotel;
 
 import java.util.List;
 
 public class AdapterProdutos extends RecyclerView.Adapter<AdapterProdutos.MyViewHolder> {
 
-    private List<produtosRestaurante> listaProdutos;
+    private List<ProdutosServicosHotel> listaProdutos;
 
-    public AdapterProdutos(List<produtosRestaurante> lista) {
+    public AdapterProdutos(List<ProdutosServicosHotel> lista) {
         this.listaProdutos = lista;
 
     }
@@ -37,11 +37,11 @@ public class AdapterProdutos extends RecyclerView.Adapter<AdapterProdutos.MyView
     // Cria a lista com os diferentes itens
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-        produtosRestaurante produto = listaProdutos.get(position);
+        ProdutosServicosHotel produto = listaProdutos.get(position);
 
-        holder.prato.setText(produto.getTituloPrato());
-        holder.valor.setText("R$ " + produto.getValorPrato());
-        holder.descrição.setText(produto.getDescricaoPrato());
+        holder.titulo.setText(produto.getTitulo());
+        holder.valor.setText("R$ " + produto.getValor());
+        holder.descrição.setText(produto.getDescricao());
 
     }
 
@@ -55,7 +55,7 @@ public class AdapterProdutos extends RecyclerView.Adapter<AdapterProdutos.MyView
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         //ImageView imagem;   - Para inserir a imagem do prato
-        TextView prato;
+        TextView titulo;
         TextView descrição;
         TextView valor;
 
@@ -63,7 +63,7 @@ public class AdapterProdutos extends RecyclerView.Adapter<AdapterProdutos.MyView
             super(itemView);
 
 
-            prato = itemView.findViewById(R.id.textPrato);
+            titulo = itemView.findViewById(R.id.textPrato);
             valor = itemView.findViewById(R.id.textValor);
             descrição = itemView.findViewById(R.id.textDescricao);
         }

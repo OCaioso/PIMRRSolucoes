@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background"
-        tools:context=".activities.FormGastos">
+        tools:context=".activities.GastosHospedeActivity">
 
         <TextView
             android:id="@+id/txtDespesasGasto"
@@ -37,17 +37,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtDespesasGasto" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnSairGastos"
-            style="@style/ButtonSair"
-            android:layout_marginBottom="45dp"
-            android:text="@string/sair"
-            app:layout_constraintBottom_toTopOf="@+id/containerGastos"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.967"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txtDespesasGasto" />
-
         <TextView
             android:id="@+id/txtQuartoGasto"
             style="@style/txtLateral"
@@ -60,7 +49,7 @@
         <View
             android:id="@+id/containerGastos"
             style="@style/ContainerComponent"
-            android:layout_height="500dp"
+            android:layout_height="400dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.4"
             app:layout_constraintStart_toStartOf="parent"
@@ -72,6 +61,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:stretchColumns="*"
+            android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="@+id/containerGastos"
             app:layout_constraintEnd_toEndOf="@+id/containerGastos"
             app:layout_constraintStart_toStartOf="@+id/containerGastos"
@@ -81,12 +71,12 @@
 
                 <TextView
                     android:id="@+id/descricao"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Descrição" />
+                    android:text="Descrição"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/valor"

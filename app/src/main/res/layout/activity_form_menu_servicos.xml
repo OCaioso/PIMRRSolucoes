@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background"
-        tools:context=".activities.FormMenuServicos">
+        tools:context=".activities.MenuServicosActivity">
 
         <TextView
             android:id="@+id/txtBemVindo"
@@ -23,15 +23,6 @@
             android:layout_marginBottom="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnSairMenu"
-            style="@style/ButtonSair"
-            android:clickable="true"
-            android:focusable="true"
-            android:text="@string/sair"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView

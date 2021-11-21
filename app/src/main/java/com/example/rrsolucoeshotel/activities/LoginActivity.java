@@ -18,7 +18,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Objects;
 
-public class FormLogin extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private EditText edEmail, edSenha;
     private Button btnAcessar;
@@ -37,6 +37,7 @@ public class FormLogin extends AppCompatActivity {
 
         //esconde barra de ação
         Objects.requireNonNull(getSupportActionBar()).hide();
+
 
         IniciarComponentes();
         ClicarAcessar();
@@ -109,7 +110,7 @@ public class FormLogin extends AppCompatActivity {
 
     private void EfetuarLogin(String email, String senha) {
         Intent logar = new Intent(getApplicationContext(),
-                FormMenuServicos.class);
+                MenuServicosActivity.class);
         logar.putExtra("emailUsado", email); //passando os dados do email para próxima atcivity
         logar.putExtra("senhaUsado", senha);
         //finish();

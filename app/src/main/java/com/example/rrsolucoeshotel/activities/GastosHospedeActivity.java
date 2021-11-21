@@ -31,10 +31,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class FormGastos extends AppCompatActivity {
+public class GastosHospedeActivity extends AppCompatActivity {
 
-    private TextView txHospede, txQuarto, txTotalGastoHospede;
-    private Button btSair;
+    private TextView txtHospede, txtQuarto, txtTotalGastoHospede;
 
     private RecyclerView recyclerView;
     private GastosAdapter gastosAdapter;
@@ -57,61 +56,6 @@ public class FormGastos extends AppCompatActivity {
 
         IniciarComponentes();
         CarregarDadosParaLista();
-
-        ClicarSairFormGastos();
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (botaoVoltarClicadoDuasVezes) {
-            super.onBackPressed();
-            return;
-        }
-
-        ConfiguraClicarDuasVezes();
-        VerificaCliqueDuplo();
-    }
-
-    private void ConfiguraClicarDuasVezes() {
-        ConstraintLayout view = findViewById(R.id.ConstraintLayout_gastos);
-
-        this.botaoVoltarClicadoDuasVezes = true;
-        SnackbarMsg(view);
-    }
-
-    private void SnackbarMsg(View view) {
-        Snackbar barraMsg = Snackbar.make(view, MSG_VOLTAR, Snackbar.LENGTH_SHORT);
-        barraMsg.setBackgroundTint(Color.WHITE);
-        barraMsg.setTextColor(Color.BLACK);
-        barraMsg.show();
-    }
-
-    private void VerificaCliqueDuplo() {
-        new Handler().postDelayed(() -> botaoVoltarClicadoDuasVezes = false, 2000);
-    }
-
-    private void ClicarSairFormGastos() {
-        btSair.setOnClickListener(view -> CriaCaixaDialogo());
-    }
-
-    private void CriaCaixaDialogo() {
-        AlertDialog.Builder caixaDialogo = new AlertDialog.Builder(this);
-        caixaDialogo.setTitle("Alerta!");
-        caixaDialogo.setIcon(R.drawable.ic_feedback);
-        caixaDialogo.setMessage("Tem certeza que deseja voltar para a tela de Login?");
-        caixaDialogo.setPositiveButton("Sim", (dialogInterface, i) -> {
-            Log.w("caixaDialogo", "Clicou sim");
-            Deslogar();
-        });
-        caixaDialogo.setNegativeButton("Não", (dialogInterface, i) ->
-                Log.w("caixaDialogo", "Clicou não"));
-        caixaDialogo.show();
-    }
-
-    private void Deslogar() {
-        Intent voltarLogin = new Intent(getApplicationContext(), FormLogin.class);
-        finish();
-        startActivity(voltarLogin);
     }
 
     private void IniciarComponentes() {
@@ -119,20 +63,17 @@ public class FormGastos extends AppCompatActivity {
         cpfHospede = getIntent().getStringExtra("cpfHospede");
         quartoHospede = getIntent().getStringExtra("quartoHospede");
 
-        txHospede = findViewById(R.id.txtHospedeGasto);
-        txQuarto = findViewById(R.id.txtQuartoGasto);
-        txTotalGastoHospede = findViewById(R.id.txtTotalGastoHospede);
-        btSair = findViewById(R.id.btnSairGastos);
+        txtHospede = findViewById(R.id.txtHospedeGasto);
+        txtQuarto = findViewById(R.id.txtQuartoGasto);
+        txtTotalGastoHospede = findViewById(R.id.txtTotalGastoHospede);
         recyclerView = findViewById(R.id.RecyclerView_gastos);
         botaoVoltarClicadoDuasVezes = false;
-
-
     }
 
     private void AdicionarNomeQuartoATela(DadosHospede d) {
-        txHospede.setText(TXT_HOSPEDE + nomeHospede);
-        txQuarto.setText(TXT_QUARTOS + quartoHospede);
-        txTotalGastoHospede.setText(TXT_TOTAL_GASTO + d.getTotal_Final_Despesas());
+        txtHospede.setText(TXT_HOSPEDE + nomeHospede);
+        txtQuarto.setText(TXT_QUARTOS + quartoHospede);
+        txtTotalGastoHospede.setText(TXT_TOTAL_GASTO + d.getTotal_Final_Despesas());
     }
 
     private void CarregarDadosParaLista() {

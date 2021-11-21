@@ -224,4 +224,34 @@ public class BDQuery {
         }
         return listaDH;
     }
+
+    public void RegistrarConsumoHospede(String nome, String cpf, String descricao, String vProduto,
+                                        String vTotal, String quantidade, String data) {
+        Connection conexaoBD6 = Conectar();
+
+        String queryInsert = "INSERT INTO Consumos (Nome, CPF, Descricao, Valor_Produto, "+
+                "Valor_Total, Quantidade, Data_Consumo) ";
+
+        queryInsert+= "VALUES (?, ?, ?, ?, ?, ?, ?);";
+
+        try {
+            PreparedStatement ppst = conexaoBD6.prepareStatement(queryInsert);
+
+            ppst.setString(1, nome);
+            ppst.setString(2, cpf);
+            ppst.setString(3, descricao);
+            ppst.setString(4, vProduto);
+            ppst.setString(5, vTotal);
+            ppst.setString(6, quantidade);
+            ppst.setString(7, data);
+
+            ppst.executeQuery();
+            ppst.close();
+            conexaoBD6.close();
+            Log.w("Query UPDATE", "Executada com sucesso");
+        }  catch (SQLException throwables) {
+            Log.w("Query UPDATE", "DEU ERRO");
+            throwables.printStackTrace();
+        }
+    }
 }
