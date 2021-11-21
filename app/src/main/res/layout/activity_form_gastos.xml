@@ -73,14 +73,5 @@
             app:layout_constraintEnd_toEndOf="@id/containerGastos"
             app:layout_constraintStart_toStartOf="@id/containerGastos" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Oi Caio, teste"
-            android:textSize="24sp"
-            tools:layout_editor_absoluteX="95dp"
-            tools:layout_editor_absoluteY="319dp" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

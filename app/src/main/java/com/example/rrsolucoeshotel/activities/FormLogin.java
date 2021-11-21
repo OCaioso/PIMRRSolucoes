@@ -28,6 +28,8 @@ public class FormLogin extends AppCompatActivity {
     private static final String[] MENSAGENS = {"Preencha todos os campos.",
             "Email não cadastrado.", "Senha incorreta.", "Toque novamente para sair"};
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
