@@ -13,70 +13,67 @@ import com.example.rrsolucoeshotel.model.produtosRestaurante;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RestauranteActivity extends AppCompatActivity {
+public class PiscinaActivity extends AppCompatActivity {
 
     private RecyclerView recyclerProdutos;
-    private List<produtosRestaurante> listaProdutos = new ArrayList<>();
+    private List<produtosRestaurante> listaPiscina = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_restaurante);
+        setContentView(R.layout.activity_piscina);
 
-        recyclerProdutos = findViewById(R.id.recyclerProdutos1);
+        recyclerProdutos = findViewById(R.id.recyclerProdutos2);
 
         // Criar listagem de Produtos
-        this.criarProdutosRestaurantes();
+        this.criarProdutosPiscina();
 
 
         // Configurar Adapter
         // Esse cara faz a exibição da lista no app - Necessita criar um construtor para classe adapter receber uma lista
         // Fazer isso dentro do AdapterProdutos.java
-        AdapterProdutos adapter = new AdapterProdutos(listaProdutos);
+        AdapterProdutos adapter2 = new AdapterProdutos(listaPiscina);
 
 
         //Configurar RecyclerView
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerProdutos.setLayoutManager(layoutManager);
         recyclerProdutos.setHasFixedSize(true); // Tamanho fixo para otimizar o layout
-        recyclerProdutos.setAdapter( adapter );
+        recyclerProdutos.setAdapter( adapter2 );
 
 
     }
 
-    public void criarProdutosRestaurantes(){
+    private void criarProdutosPiscina() {
 
-        produtosRestaurante produto = new produtosRestaurante("Strogonoff de Frango", "22", "Descrição teste");
-        this.listaProdutos.add( produto );
+        produtosRestaurante produto = new produtosRestaurante("PISCINA", "22", "Descrição teste");
+        this.listaPiscina.add( produto );
 
-        produto = new produtosRestaurante("Strogonoff de Carne", "32", "Descrição teste");
-        this.listaProdutos.add( produto );
+        produto = new produtosRestaurante("PISCINA", "32", "Descrição teste");
+        this.listaPiscina.add( produto );
 
         produto = new produtosRestaurante("Pizza de Quatro Queijos", "20", "Descrição teste");
-        this.listaProdutos.add( produto );
+        this.listaPiscina.add( produto );
 
         produto = new produtosRestaurante("Pizza de Hot Dogs", "18", "Descrição teste");
-        this.listaProdutos.add( produto );
+        this.listaPiscina.add( produto );
 
         produto = new produtosRestaurante("Risoto de Limão Siciliano", "40", "Descrição teste");
-        this.listaProdutos.add( produto );
+        this.listaPiscina.add( produto );
 
         produto = new produtosRestaurante("Lasagna alla Bolognesa", "28", "Descrição teste");
-        this.listaProdutos.add( produto );
+        this.listaPiscina.add( produto );
 
         produto = new produtosRestaurante("Lasagna Quatro Queijos", "28", "Descrição teste");
-        this.listaProdutos.add( produto );
+        this.listaPiscina.add( produto );
 
         produto = new produtosRestaurante("Coca-cola", "6", "Descrição teste");
-        this.listaProdutos.add( produto );
+        this.listaPiscina.add( produto );
 
         produto = new produtosRestaurante("Sprite", "6", "Descrição teste");
-        this.listaProdutos.add( produto );
+        this.listaPiscina.add( produto );
 
         produto = new produtosRestaurante("Fanta", "6", "Descrição teste");
-        this.listaProdutos.add( produto );
-
+        this.listaPiscina.add( produto );
     }
-
-
 }

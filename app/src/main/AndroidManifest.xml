@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.rrsolucoeshotel">
+    <!-- permissões necessárias para conectar o banco de dados online -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -9,6 +11,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RRSolucoesHotel">
+        <activity
+            android:name=".activities.TurismoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.SPAActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.SalaoJogosActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.SalaodeFestasActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.PiscinaActivity"
+            android:exported="true" />
         <activity
             android:name=".activities.RestauranteActivity"
             android:exported="true" />
@@ -28,9 +45,5 @@
             </intent-filter>
         </activity>
     </application>
-    <!--permissões necessárias para conectar o banco de dados online-->
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <!--uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/-->
 
 </manifest>
