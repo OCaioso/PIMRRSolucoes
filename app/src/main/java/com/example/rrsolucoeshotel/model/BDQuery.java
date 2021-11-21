@@ -9,8 +9,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
-public class BDHelper {
+public class BDQuery {
 
     private static final String DATABASE ="BDRRSolucoesHotel";
     private static final String LOGIN = "RRSolucoes_SQLLogin_1";
@@ -171,16 +172,13 @@ public class BDHelper {
         return quartoHospede;
     }
 
-    public void SalvarGastosEmDadosHospede(DadosHospede consumoH, String nome, String cpf){
+    public List<DadosHospede> ListarGastosEmDadosHospede(List<DadosHospede> listaDH, String nome, String cpf){
         Connection conexaoBD5 = Conectar();
-        String nomeH = "", cpfH = "", descricaoH = "";
-        double vProdutoH = 0, vTotalH = 0;
         int quantidadeH = 0;
-        Date dataConsumoH = null;
+        double vProdutoH = 0, vTotalH = 0, totalFinalDespesas = 0;
 
-        String querySelect = "SELECT c.Nome, c.CPF, c.Descricao, c.Valor_Produto, c.Valor_Total, " +
-                "c.Quantidade, c.Data_Consumo FROM Consumos c LEFT JOIN Hospedes h " +
-                "ON h.Nome = c.Nome AND h.CPF = c.CPF ";
+        String querySelect = "SELECT c.Descricao, c.Valor_Produto, c.Quantidade "+
+                "FROM Consumos c LEFT JOIN Hospedes h ON c.Nome = h.Nome AND c.CPF = h.CPF ";
         querySelect+= "WHERE c.Nome = ? AND c.CPF = ?;";
 
         try {
@@ -192,31 +190,38 @@ public class BDHelper {
             ResultSet resultadoQuery = ppst.executeQuery();
 
             while (resultadoQuery.next()) {
-                nomeH = resultadoQuery.getString("Nome");
-                Log.w("valores do resultset", "Nome: "+ nomeH);
-                cpfH = resultadoQuery.getString("CPF");
-                Log.w("valores do resultset", "CPF: "+ cpfH);
-                descricaoH = resultadoQuery.getString("Descricao");
-                Log.w("valores do resultset", "Descricao: "+ descricaoH);
+                DadosHospede dadosHospede = new DadosHospede();
+
+                dadosHospede.setDescricao(resultadoQuery.getString("Descricao"));
+                Log.w("valores do resultset", "Valor_Produto: "+ dadosHospede.getDescricao());
+
+                dadosHospede.setValor_Produto(resultadoQuery.getString("Valor_Produto"));
+                Log.w("valores do resultset", "Valor_Produto: "+ dadosHospede.getValor_Produto());
+
                 vProdutoH = Double.parseDouble(resultadoQuery.getString("Valor_Produto"));
                 Log.w("valores do resultset", "Valor_Produto: "+ vProdutoH);
-                vTotalH = Double.parseDouble(resultadoQuery.getString("Valor_Total"));
-                Log.w("valores do resultset", "Valor_Total: "+ vTotalH);
+
+                dadosHospede.setQuantidade(resultadoQuery.getString("Quantidade"));
+                Log.w("valores do resultset", "Valor_Produto: "+ dadosHospede.getQuantidade());
+
                 quantidadeH = Integer.parseInt(resultadoQuery.getString("Quantidade"));
                 Log.w("valores do resultset", "Quantidade: "+ quantidadeH);
-                dataConsumoH = Date.valueOf(resultadoQuery.getString("Data_Consumo"));
-                Log.w("valores do resultset", "Data_Consumo: "+ dataConsumoH);
+
+                vTotalH = quantidadeH * vProdutoH;
+                dadosHospede.setValor_Total(String.valueOf(vTotalH));
+                Log.w("valores do resultset", "Valor_Total: "+ vTotalH);
+
+                totalFinalDespesas += vTotalH;
+                dadosHospede.setTotal_Final_Despesas(String.valueOf(totalFinalDespesas));
+                Log.w("TotalFinalDespesas: ", String.valueOf(totalFinalDespesas));
+
+                listaDH.add(dadosHospede);
             }
+
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
-        consumoH.setNome(nomeH);
-        consumoH.setCPF(cpfH);
-        consumoH.setDescricao(descricaoH);
-        consumoH.setValor_Produto(vProdutoH);
-        consumoH.setValor_Total(vTotalH);
-        consumoH.setQuantidade(quantidadeH);
-        consumoH.setData_Consumo(dataConsumoH);
+        return listaDH;
     }
 }

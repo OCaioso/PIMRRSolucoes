@@ -8,6 +8,7 @@
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ConstraintLayout_gastos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background"
@@ -61,17 +62,77 @@
             style="@style/ContainerComponent"
             android:layout_height="500dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtQuartoGasto" />
 
-        <ListView
-            android:id="@+id/activity_lista_alunos_listview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="30dp"
-            app:layout_constraintBottom_toBottomOf="@id/containerGastos"
-            app:layout_constraintEnd_toEndOf="@id/containerGastos"
-            app:layout_constraintStart_toStartOf="@id/containerGastos" />
+        <TableLayout
+            android:id="@+id/tableLayout1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:stretchColumns="*"
+            app:layout_constraintBottom_toBottomOf="@+id/containerGastos"
+            app:layout_constraintEnd_toEndOf="@+id/containerGastos"
+            app:layout_constraintStart_toStartOf="@+id/containerGastos"
+            app:layout_constraintTop_toTopOf="@+id/containerGastos">
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/descricao"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Descrição" />
+
+                <TextView
+                    android:id="@+id/valor"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Valor" />
+
+                <TextView
+                    android:id="@+id/quantidade"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Qtd." />
+
+                <TextView
+                    android:id="@+id/v_total"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="V_Total" />
+
+            </TableRow>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/RecyclerView_gastos"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/txtTotalGastoHospede"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:padding="5dp" />
+
+        </TableLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

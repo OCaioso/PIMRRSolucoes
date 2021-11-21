@@ -4,76 +4,49 @@ import java.util.Date;
 
 public class DadosHospede {
 
-    private String Nome, CPF, Descricao;
-    private double Valor_Produto, Valor_Total;
-    private int Quarto, Quantidade;
-    private Date Data_Consumo;
+    private String Descricao, Valor_Produto, Valor_Total, Quantidade, Total_Final_Despesas;
 
     public DadosHospede(){
 
-    }
-
-    public void setNome(String nome) {
-        Nome = nome;
-    }
-
-    public void setCPF(String CPF) {
-        this.CPF = CPF;
-    }
-
-    public void setDescricao(String descricao) {
-        Descricao = descricao;
-    }
-
-    public void setValor_Produto(double valor_Produto) {
-        Valor_Produto = valor_Produto;
-    }
-
-    public void setValor_Total(double valor_Total) {
-        Valor_Total = valor_Total;
-    }
-
-    public void setQuarto(int quarto) {
-        Quarto = quarto;
-    }
-
-    public void setQuantidade(int quantidade) {
-        Quantidade = quantidade;
-    }
-
-    public void setData_Consumo(Date data_Consumo) {
-        Data_Consumo = data_Consumo;
-    }
-
-    public String getNome() {
-        return Nome;
-    }
-
-    public String getCPF() {
-        return CPF;
     }
 
     public String getDescricao() {
         return Descricao;
     }
 
-    public double getValor_Produto() {
+    public void setDescricao(String descricao) {
+        Descricao = descricao;
+    }
+
+    public String getValor_Produto() {
         return Valor_Produto;
     }
 
-    public double getValor_Total() {
+    public void setValor_Produto(String valor_Produto) {
+        Valor_Produto = valor_Produto;
+    }
+
+    public String getValor_Total() {
         return Valor_Total;
     }
 
-    public int getQuarto() {
-        return Quarto;
+    public void setValor_Total(String valor_Total) {
+        Valor_Total = valor_Total;
     }
 
-    public int getQuantidade() {
+    public String getQuantidade() {
         return Quantidade;
     }
 
-    public Date getData_Consumo() {
-        return Data_Consumo;
+    public void setQuantidade(String quantidade) {
+        Quantidade = quantidade;
+    }
+
+    public String getTotal_Final_Despesas() {
+        return Total_Final_Despesas;
+    }
+
+    public void setTotal_Final_Despesas(String total_Final_Despesas) {
+        Total_Final_Despesas = total_Final_Despesas;
     }
 }

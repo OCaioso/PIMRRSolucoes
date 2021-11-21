@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 
 import com.example.rrsolucoeshotel.R;
-import com.example.rrsolucoeshotel.model.BDHelper;
+import com.example.rrsolucoeshotel.model.BDQuery;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Objects;
@@ -91,7 +91,7 @@ public class FormLogin extends AppCompatActivity {
     }
 
     private void VerificarLogin(View view, String email, String senha) {
-        BDHelper bancoDados = new BDHelper();
+        BDQuery bancoDados = new BDQuery();
 
         if (bancoDados.VerificarEmail(email)) {
             if (bancoDados.VerificarSenhaDoEmail(email, senha)) {

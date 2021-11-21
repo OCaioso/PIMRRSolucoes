@@ -17,7 +17,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.rrsolucoeshotel.R;
-import com.example.rrsolucoeshotel.model.BDHelper;
+import com.example.rrsolucoeshotel.model.BDQuery;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Objects;
@@ -29,6 +29,7 @@ public class FormMenuServicos extends AppCompatActivity {
 
     boolean botaoVoltarClicadoDuasVezes;
     private String nomeHospede;
+    private String quartoHospede;
     private String emailHospede;
     private String senhaHospede;
 
@@ -43,7 +44,6 @@ public class FormMenuServicos extends AppCompatActivity {
 
         //esconde barra de ação
         Objects.requireNonNull(getSupportActionBar()).hide();
-
 
         IniciarComponentes();
 
@@ -69,18 +69,17 @@ public class FormMenuServicos extends AppCompatActivity {
 
         ConfiguraClicarDuasVezes();
         VerificaCliqueDuplo();
-
-    }
-
-    private void ConfiguraClicarDuasVezes() {
-        ConstraintLayout view = findViewById(R.id.ConstraintLayout_login);
-
-        this.botaoVoltarClicadoDuasVezes = true;
-        SnackbarMsg(view);
     }
 
     private void VerificaCliqueDuplo() {
         new Handler().postDelayed(() -> botaoVoltarClicadoDuasVezes = false, 2000);
+    }
+
+    private void ConfiguraClicarDuasVezes() {
+        ConstraintLayout layout = findViewById(R.id.ConstraintLayout_menu);
+
+        this.botaoVoltarClicadoDuasVezes = true;
+        SnackbarMsg(layout);
     }
 
     private void ClicarSairFormMenuServicos() {
@@ -89,15 +88,16 @@ public class FormMenuServicos extends AppCompatActivity {
 
     private void ClicarGastos() {
         btGMenu.setOnClickListener(view -> {
-            IrFormGastos(nomeHospede, senhaHospede);
+            IrFormGastos();
         });
     }
 
-    private void IrFormGastos(String nome, String cpf) {
+    private void IrFormGastos() {
         Intent irGMenu = new Intent(getApplicationContext(),
                 FormGastos.class);
-        irGMenu.putExtra("nomeHospede", nome); //passando os dados do email para próxima atcivity
-        irGMenu.putExtra("cpfHospede", cpf);
+        irGMenu.putExtra("nomeHospede", nomeHospede); //passando os dados do email para próxima atcivity
+        irGMenu.putExtra("cpfHospede", senhaHospede);
+        irGMenu.putExtra("quartoHospede", quartoHospede);
         //finish();
         startActivity(irGMenu);
     }
@@ -123,10 +123,11 @@ public class FormMenuServicos extends AppCompatActivity {
     }
 
     private void IniciarComponentes() {
-        BDHelper bancoDados = new BDHelper();
+        BDQuery bancoDados = new BDQuery();
         emailHospede = getIntent().getStringExtra("emailUsado");
         senhaHospede = getIntent().getStringExtra("senhaUsado");
         nomeHospede = bancoDados.RetornarNomeHospede(emailHospede, senhaHospede);
+        quartoHospede = bancoDados.RetornarQuartoHospede(nomeHospede, senhaHospede);
 
         txBVindo = findViewById(R.id.txtBemVindo);
         btSair = findViewById(R.id.btnSairMenu);
