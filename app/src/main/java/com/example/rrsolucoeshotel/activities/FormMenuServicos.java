@@ -36,6 +36,13 @@ public class FormMenuServicos extends AppCompatActivity {
     private final static String TXT_BVINDO = "Bem vindo, ";
 
     private Button botaoRestaurante;
+    private Button botaoPiscina;
+    private Button botaoSalaoFestas;
+    private Button botaoSalaoJogos;
+    private Button botaoSPA;
+    private Button botaoTurismo;
+    private Button botaoConsultarGastos;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +53,6 @@ public class FormMenuServicos extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).hide();
 
         IniciarComponentes();
-
         ClicarSairFormMenuServicos();
         ClicarGastos();
 
@@ -57,7 +63,63 @@ public class FormMenuServicos extends AppCompatActivity {
                 Intent intent = new Intent(FormMenuServicos.this, RestauranteActivity.class);
                 startActivity(intent);
             }
+
         });
+
+        botaoPiscina = findViewById(R.id.btnPiscinaMenu);
+        botaoPiscina.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FormMenuServicos.this, PiscinaActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        botaoSalaoFestas = findViewById(R.id.btnSalaoFMenu);
+        botaoSalaoFestas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FormMenuServicos.this, SalaodeFestasActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        botaoSalaoJogos = findViewById(R.id.btnSalaoJMenu);
+        botaoSalaoJogos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FormMenuServicos.this, SalaoJogosActivity.class);
+                startActivity(intent);
+            }
+
+        });
+
+        botaoSPA = findViewById(R.id.btnSpaMenu);
+        botaoSPA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FormMenuServicos.this, SPAActivity.class);
+                startActivity(intent);
+            }
+
+        });
+
+        botaoTurismo = findViewById(R.id.btnTurismoMenu);
+        botaoTurismo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FormMenuServicos.this, TurismoActivity.class);
+                startActivity(intent);
+            }
+
+        });
+
+
+
+
+
+
     }
 
     @Override
@@ -95,7 +157,7 @@ public class FormMenuServicos extends AppCompatActivity {
     private void IrFormGastos() {
         Intent irGMenu = new Intent(getApplicationContext(),
                 FormGastos.class);
-        irGMenu.putExtra("nomeHospede", nomeHospede); //passando os dados do email para próxima atcivity
+        irGMenu.putExtra("nomeHospede", nomeHospede); //passando os dados do email para próxima activity
         irGMenu.putExtra("cpfHospede", senhaHospede);
         irGMenu.putExtra("quartoHospede", quartoHospede);
         //finish();

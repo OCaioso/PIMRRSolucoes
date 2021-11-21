@@ -1,9 +1,8 @@
-package com.example.rrsolucoeshotel.adapters;
+package com.example.rrsolucoeshotel.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -41,7 +40,7 @@ public class AdapterProdutos extends RecyclerView.Adapter<AdapterProdutos.MyView
         produtosRestaurante produto = listaProdutos.get(position);
 
         holder.prato.setText(produto.getTituloPrato());
-        holder.valor.setText(produto.getValorPrato());
+        holder.valor.setText("R$ " + produto.getValorPrato());
         holder.descrição.setText(produto.getDescricaoPrato());
 
     }
@@ -62,7 +61,8 @@ public class AdapterProdutos extends RecyclerView.Adapter<AdapterProdutos.MyView
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            
+
+
             prato = itemView.findViewById(R.id.textPrato);
             valor = itemView.findViewById(R.id.textValor);
             descrição = itemView.findViewById(R.id.textDescricao);
