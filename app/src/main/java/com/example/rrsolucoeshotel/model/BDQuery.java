@@ -225,8 +225,7 @@ public class BDQuery {
         return listaDH;
     }
 
-    public void RegistrarConsumoHospede(String nome, String cpf, String descricao, String vProduto,
-                                        String vTotal, String quantidade, String data) {
+    public void RegistrarConsumoHospede(DadosHospede dados) {
         Connection conexaoBD6 = Conectar();
 
         String queryInsert = "INSERT INTO Consumos (Nome, CPF, Descricao, Valor_Produto, "+
@@ -237,18 +236,21 @@ public class BDQuery {
         try {
             PreparedStatement ppst = conexaoBD6.prepareStatement(queryInsert);
 
-            ppst.setString(1, nome);
-            ppst.setString(2, cpf);
-            ppst.setString(3, descricao);
-            ppst.setString(4, vProduto);
-            ppst.setString(5, vTotal);
-            ppst.setString(6, quantidade);
-            ppst.setString(7, data);
+            ppst.setString(1, dados.getNome());
+            ppst.setString(2, dados.getCPF());
+            ppst.setString(3, dados.getDescricao());
+            ppst.setString(4, dados.getValor_Produto());
+            ppst.setString(5, dados.getValor_Total());
+            ppst.setString(6, dados.getQuantidade());
+            ppst.setString(7, dados.getData());
 
             ppst.executeQuery();
             ppst.close();
             conexaoBD6.close();
-            Log.w("Query UPDATE", "Executada com sucesso");
+            Log.w("Query UPDATE", "Executada com sucesso, dados inseridos: " +
+                    dados.getNome() + dados.getCPF() + dados.getDescricao() +
+                    dados.getValor_Produto() + dados.getValor_Total() + dados.getQuantidade() +
+                    dados.getData());
         }  catch (SQLException throwables) {
             Log.w("Query UPDATE", "DEU ERRO");
             throwables.printStackTrace();

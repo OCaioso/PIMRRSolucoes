@@ -1,13 +1,28 @@
 package com.example.rrsolucoeshotel.model;
 
-import java.util.Date;
-
 public class DadosHospede {
 
-    private String Descricao, Valor_Produto, Valor_Total, Quantidade, Total_Final_Despesas;
+    private String Nome, CPF, Descricao, Valor_Produto, Valor_Total, Quantidade, Data,
+            Total_Final_Despesas;
 
     public DadosHospede(){
 
+    }
+
+    public String getNome() {
+        return Nome;
+    }
+
+    public void setNome(String nome) {
+        Nome = nome;
+    }
+
+    public String getCPF() {
+        return CPF;
+    }
+
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
     }
 
     public String getDescricao() {
@@ -40,6 +55,14 @@ public class DadosHospede {
 
     public void setQuantidade(String quantidade) {
         Quantidade = quantidade;
+    }
+
+    public String getData() {
+        return Data;
+    }
+
+    public void setData(String data) {
+        Data = data;
     }
 
     public String getTotal_Final_Despesas() {

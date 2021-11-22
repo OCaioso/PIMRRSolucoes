@@ -63,9 +63,9 @@ public class AdapterProdutos extends RecyclerView.Adapter<AdapterProdutos.MyView
             super(itemView);
 
 
-            titulo = itemView.findViewById(R.id.textPrato);
+            titulo = itemView.findViewById(R.id.textProduto);
             valor = itemView.findViewById(R.id.textValor);
-            descrição = itemView.findViewById(R.id.textDescricaoAlertDialog);
+            descrição = itemView.findViewById(R.id.textDescricao);
         }
     }
 }

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,11 +14,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.rrsolucoeshotel.R;
 import com.example.rrsolucoeshotel.model.BDQuery;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
@@ -29,8 +34,6 @@ public class LoginActivity extends AppCompatActivity {
     boolean botaoVoltarClicadoDuasVezes;
     private static final String[] MENSAGENS = {"Preencha todos os campos.",
             "Email não cadastrado.", "Senha incorreta.", "Toque novamente para sair"};
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +82,7 @@ public class LoginActivity extends AppCompatActivity {
     private void ClicarAcessar() {
         btnAcessar.setOnClickListener(view -> {
             //CriaCaixaDialogo();
+
             progressBar.setVisibility(View.VISIBLE);
 
             String email = edEmail.getText().toString();
@@ -91,6 +95,7 @@ public class LoginActivity extends AppCompatActivity {
             } else {
                 VerificarLogin(view, email, senha);
             }
+
         });
     }
 
@@ -135,8 +140,11 @@ public class LoginActivity extends AppCompatActivity {
         botaoVoltarClicadoDuasVezes = false;
     }
 
-    //teste com caixa dialogo
+    //teste com caixa dialogo, deixei em comentário o comando de login para testar a criação dela
+    //Molde de data caixa de mensagem para quando for confirmar o pedido
     private void CriaCaixaDialogo() {
+        int[] quantidade = {1};
+
         AlertDialog.Builder criaCaixa = new AlertDialog.Builder(this);
         criaCaixa.setTitle("Confirmação de compra");
         criaCaixa.setIcon(R.drawable.ic_feedback);
@@ -146,22 +154,61 @@ public class LoginActivity extends AppCompatActivity {
         criaCaixa.setView(caixaView);
 
         criaCaixa.setPositiveButton("Confimar", (dialogInterface, i) -> {
-            Log.w("caixaDialogo", "Clicou confirmar");
-            //Deslogar();
+            //DadosHospede dadosHospede = new DadosHospede();
+
+            //dadosHospede.setNome(nomeHospede);
+            //dadosHospede.setsetCPF(cpfHospede);
+            //dadosHospede.setDescricao(FaltaDESCRICAO);
+            //dadosHospede.setValor_Produto(String.valueOf(FaltaVALOR_PRODUTO));
+            //dadosHospede.setQuantidade(String.valueOf(quantidade[0]));
+
+            //double VALOR_TOTAL = quantidade[0] * VALOR_PRODUTO;
+            //dadosHospede.setValor_Total(String.valueOf(FaltaVALOR_TOTAL));
+            //dadosHospede.setData(PegaDataAtual());
+
+            //RegistrarConsumoHospede(dadosHospede);
+            Log.w("Confirmar pedido", PegaDataAtual());
         });
-        criaCaixa.setNegativeButton("Cancelar", (dialogInterface, i) ->
-                Log.w("caixaDialogo", "Clicou cancelar"));
+        criaCaixa.setNegativeButton("Cancelar",
+                (dialogInterface, i) -> Log.w("Cancelar pedido", PegaDataAtual()));
 
-        EditText nomeProduto =  caixaView.findViewById(R.id.textDescricaoAlertDialog);
-        EditText quantidadeProduto = caixaView.findViewById(R.id.txtQuantidadeAlertDialog);
+        TextView descricaoProduto =  caixaView.findViewById(R.id.txtDescricaoAlertDialog);
+        TextView quantidadeProduto = caixaView.findViewById(R.id.txtQuantidadeAlertDialog);
 
+        SubtraiAQuantidade(quantidade, caixaView, quantidadeProduto);
+        SomaAQuantidade(quantidade, caixaView, quantidadeProduto);
+
+        AlertDialog caixaDialogo = criaCaixa.create();
+        caixaDialogo.show();
+    }
+
+    private void SubtraiAQuantidade(int[] quantidade, View caixaView, TextView quantidadeProduto) {
         Button btnMenosQuantidade = caixaView.findViewById(R.id.btnMenosQuantidadeAlertDialog);
-        btnMenosQuantidade.setOnClickListener(v -> Log.w("Teste botão menor", "apertou botão -"));
+        btnMenosQuantidade.setOnClickListener(v -> {
+            if(quantidade[0] > 1){
+                quantidade[0]--;
+                quantidadeProduto.setText(String.valueOf(quantidade[0]));
+                Log.w("Teste botão menor", "apertou botão -");
+            }
+        });
+    }
 
+    private void SomaAQuantidade(int[] quantidade, View caixaView, TextView quantidadeProduto) {
         Button btnMaisQuantidade = caixaView.findViewById(R.id.btnMaisQuantidadeAlertDialog);
-        btnMaisQuantidade.setOnClickListener(v -> Log.w("Teste botão maior", "apertou botão +"));
+        btnMaisQuantidade.setOnClickListener(v -> {
+            quantidade[0]++;
+            quantidadeProduto.setText(String.valueOf(quantidade[0]));
+            Log.w("Teste botão maior", "apertou botão +");
+        });
+    }
 
-        AlertDialog alertDialog = criaCaixa.create();
-        alertDialog.show();
+    private String PegaDataAtual() {
+        Locale locale = new Locale("pt", "BR");
+        SimpleDateFormat formataData = new SimpleDateFormat("yyyy-MM-dd", locale);
+        Date data = new Date();
+        String dataFormatada = formataData.format(data);
+        Log.w("Teste pegar data", "Data sistema: " + dataFormatada );
+
+        return dataFormatada;
     }
 }

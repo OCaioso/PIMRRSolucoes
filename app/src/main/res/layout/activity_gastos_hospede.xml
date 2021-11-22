@@ -74,35 +74,39 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Descrição"
+                    android:textSize="15dp"
                     android:textColor="@color/black"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:text="Descrição" />
 
                 <TextView
                     android:id="@+id/valor"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
                     android:text="Valor" />
 
                 <TextView
                     android:id="@+id/quantidade"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
                     android:text="Qtd." />
 
                 <TextView
                     android:id="@+id/v_total"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
                     android:text="V_Total" />
 
             </TableRow>
@@ -117,7 +121,7 @@
             <TextView
                 android:id="@+id/txtTotalGastoHospede"
                 android:gravity="center"
-                android:textSize="20dp"
+                android:textSize="17dp"
                 android:textColor="@color/black"
                 android:layout_height="wrap_content"
                 android:padding="5dp" />
