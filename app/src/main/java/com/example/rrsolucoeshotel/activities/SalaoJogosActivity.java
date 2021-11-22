@@ -1,6 +1,7 @@
 package com.example.rrsolucoeshotel.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.rrsolucoeshotel.R;
@@ -53,6 +55,7 @@ public class SalaoJogosActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerProdutos.setLayoutManager(layoutManager);
         recyclerProdutos.setHasFixedSize(true); // Tamanho fixo para otimizar o layout
+        recyclerProdutos.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
         recyclerProdutos.setAdapter( adapter );
     }
 
@@ -65,34 +68,31 @@ public class SalaoJogosActivity extends AppCompatActivity {
 
     public void criarProdutosSalaoJogos(){
 
-        ProdutosServicosHotel produto = new ProdutosServicosHotel("listaSalaojogos", "22", "Descrição teste");
+        ProdutosServicosHotel produto = new ProdutosServicosHotel("Baralho simples", "25", "Baralho Convencional de plastico 52 cartas");
         this.listaSalaojogos.add( produto );
 
-        produto = new ProdutosServicosHotel("listaSalaojogos", "32", "Descrição teste");
+        produto = new ProdutosServicosHotel("Baralho Duplo", "45", "Baralho Convencional de plasticos 104 cartas");
         this.listaSalaojogos.add( produto );
 
-        produto = new ProdutosServicosHotel("listaSalaojogos", "20", "Descrição teste");
+        produto = new ProdutosServicosHotel("Dealer para jogos de Poker - minimo 4 horas", "500", "Profissional embaralhador para jogos de poker");
         this.listaSalaojogos.add( produto );
 
-        produto = new ProdutosServicosHotel("Pizza de Hot Dogs", "18", "Descrição teste");
+        produto = new ProdutosServicosHotel("Mesa de Sinuca - 1 hora", "20", "Aluguel de mesa de sinuca para jogos de bilhar com Tacos e Jogo de Bolas");
         this.listaSalaojogos.add( produto );
 
-        produto = new ProdutosServicosHotel("Risoto de Limão Siciliano", "40", "Descrição teste");
+        produto = new ProdutosServicosHotel("Playstation 5 - 1 hora", "20", "Aluguel do Playstation 5 - Consultar jogos disponiveis");
         this.listaSalaojogos.add( produto );
 
-        produto = new ProdutosServicosHotel("Lasagna alla Bolognesa", "28", "Descrição teste");
+        produto = new ProdutosServicosHotel("Xbox One - 1 hora", "18", "Aluguel do Xbox One - Consultar jogos disponiveis");
         this.listaSalaojogos.add( produto );
 
-        produto = new ProdutosServicosHotel("Lasagna Quatro Queijos", "28", "Descrição teste");
+        produto = new ProdutosServicosHotel("Mesa de Xadrez", "15", "Aluguel da mesa de xadrez");
         this.listaSalaojogos.add( produto );
 
-        produto = new ProdutosServicosHotel("Coca-cola", "6", "Descrição teste");
+        produto = new ProdutosServicosHotel("Tenis de Mesa", "12", "Aluguel da mesa de Tenis de mesa com Raquete e Bolinhas");
         this.listaSalaojogos.add( produto );
 
-        produto = new ProdutosServicosHotel("Sprite", "6", "Descrição teste");
-        this.listaSalaojogos.add( produto );
-
-        produto = new ProdutosServicosHotel("Fanta", "6", "Descrição teste");
+        produto = new ProdutosServicosHotel("Arcade Jogos Retrô", "12", "Aluguel do sistema de Arcade com jogos retrô - 4 Jogadores");
         this.listaSalaojogos.add( produto );
     }
 

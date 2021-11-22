@@ -1,6 +1,7 @@
 package com.example.rrsolucoeshotel.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.rrsolucoeshotel.R;
@@ -53,6 +55,7 @@ public class SalaodeFestasActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerProdutos.setLayoutManager(layoutManager);
         recyclerProdutos.setHasFixedSize(true); // Tamanho fixo para otimizar o layout
+        recyclerProdutos.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
         recyclerProdutos.setAdapter( adapter );
     }
 
@@ -65,34 +68,25 @@ public class SalaodeFestasActivity extends AppCompatActivity {
 
     public void criarProdutosSalaoFestas(){
 
-        ProdutosServicosHotel produto = new ProdutosServicosHotel("listaSalaoFestas", "22", "Descrição teste");
+        ProdutosServicosHotel produto = new ProdutosServicosHotel("Aluguel do salão por 1 hora", "80", "Espaço sujeito a disponibilidade");
         this.listaSalaoFestas.add( produto );
 
-        produto = new ProdutosServicosHotel("listaSalaoFestas", "32", "Descrição teste");
+        produto = new ProdutosServicosHotel("Aluguel do salão por 2 horas", "160", "Espaço sujeito a disponibilidade");
         this.listaSalaoFestas.add( produto );
 
-        produto = new ProdutosServicosHotel("Pizza de Quatro Queijos", "20", "Descrição teste");
+        produto = new ProdutosServicosHotel("Aluguel do salão por 3 horas" , "240", "Espaço sujeito a disponibilidade");
         this.listaSalaoFestas.add( produto );
 
-        produto = new ProdutosServicosHotel("Pizza de Hot Dogs", "18", "Descrição teste");
+        produto = new ProdutosServicosHotel("Aluguel do salão por 4 horas", "320", "Espaço sujeito a disponibilidade");
         this.listaSalaoFestas.add( produto );
 
-        produto = new ProdutosServicosHotel("Risoto de Limão Siciliano", "40", "Descrição teste");
+        produto = new ProdutosServicosHotel("Aluguel do salão por 5 horas", "400", "Espaço sujeito a disponibilidade");
         this.listaSalaoFestas.add( produto );
 
-        produto = new ProdutosServicosHotel("Lasagna alla Bolognesa", "28", "Descrição teste");
+        produto = new ProdutosServicosHotel("Aluguel do salão por 6 horas", "480", "Espaço sujeito a disponibilidade");
         this.listaSalaoFestas.add( produto );
 
-        produto = new ProdutosServicosHotel("Lasagna Quatro Queijos", "28", "Descrição teste");
-        this.listaSalaoFestas.add( produto );
-
-        produto = new ProdutosServicosHotel("Coca-cola", "6", "Descrição teste");
-        this.listaSalaoFestas.add( produto );
-
-        produto = new ProdutosServicosHotel("Sprite", "6", "Descrição teste");
-        this.listaSalaoFestas.add( produto );
-
-        produto = new ProdutosServicosHotel("Fanta", "6", "Descrição teste");
+        produto = new ProdutosServicosHotel("Aluguel do salão pernoite", "800", "Espaço sujeito a disponibilidade");
         this.listaSalaoFestas.add( produto );
 
     }

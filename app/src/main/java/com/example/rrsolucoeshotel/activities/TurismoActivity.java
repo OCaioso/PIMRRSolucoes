@@ -1,6 +1,7 @@
 package com.example.rrsolucoeshotel.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.rrsolucoeshotel.R;
@@ -53,6 +55,7 @@ public class TurismoActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerProdutos.setLayoutManager(layoutManager);
         recyclerProdutos.setHasFixedSize(true); // Tamanho fixo para otimizar o layout
+        recyclerProdutos.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
         recyclerProdutos.setAdapter( adapter );
     }
 
@@ -65,34 +68,31 @@ public class TurismoActivity extends AppCompatActivity {
 
     public void criarProdutosTurismo(){
 
-        ProdutosServicosHotel produto = new ProdutosServicosHotel("listaTurismo", "22", "Descrição teste");
+        ProdutosServicosHotel produto = new ProdutosServicosHotel("Charrete", "150", "Passeio noturno pela cidade em charretes");
         this.listaTurismo.add( produto );
 
-        produto = new ProdutosServicosHotel("listaTurismo", "32", "Descrição teste");
+        produto = new ProdutosServicosHotel("Passeio de Helicoptero Diurno", "660", "Sobrevoo das lindas cataratas do Parque Ambiental");
         this.listaTurismo.add( produto );
 
-        produto = new ProdutosServicosHotel("listaTurismo", "20", "Descrição teste");
+        produto = new ProdutosServicosHotel("Passeio de Helicoptero Noturno", "800", "Sobrevoo da iluminada cidade a noite");
         this.listaTurismo.add( produto );
 
-        produto = new ProdutosServicosHotel("Pizza de Hot Dogs", "18", "Descrição teste");
+        produto = new ProdutosServicosHotel("Quadriciclo", "180", "Alguel de Quadriciclo para conhecer as Dunas");
         this.listaTurismo.add( produto );
 
-        produto = new ProdutosServicosHotel("Risoto de Limão Siciliano", "40", "Descrição teste");
+        produto = new ProdutosServicosHotel("Parque Aquatico", "350", "Refrescante atração para passar o dia com a familia");
         this.listaTurismo.add( produto );
 
-        produto = new ProdutosServicosHotel("Lasagna alla Bolognesa", "28", "Descrição teste");
+        produto = new ProdutosServicosHotel("Rota dos Aventureiros", "28", "Trilhas acompanhados de nossos guias da Natureza");
         this.listaTurismo.add( produto );
 
-        produto = new ProdutosServicosHotel("Lasagna Quatro Queijos", "28", "Descrição teste");
+        produto = new ProdutosServicosHotel("Bungee Jump", "200", "Pulo radical em cachoeira");
         this.listaTurismo.add( produto );
 
-        produto = new ProdutosServicosHotel("Coca-cola", "6", "Descrição teste");
+        produto = new ProdutosServicosHotel("Rio Bravo", "250", "Enfrente a correnteza nessa emocionante experiencia");
         this.listaTurismo.add( produto );
 
-        produto = new ProdutosServicosHotel("Sprite", "6", "Descrição teste");
-        this.listaTurismo.add( produto );
-
-        produto = new ProdutosServicosHotel("Fanta", "6", "Descrição teste");
+        produto = new ProdutosServicosHotel("Catamarã", "150", "Passeio tranquilo em nosso barco - Almoço incluso");
         this.listaTurismo.add( produto );
     }
 

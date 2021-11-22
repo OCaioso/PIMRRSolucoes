@@ -1,6 +1,7 @@
 package com.example.rrsolucoeshotel.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.rrsolucoeshotel.R;
@@ -53,6 +55,7 @@ public class SPAActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerProdutos.setLayoutManager(layoutManager);
         recyclerProdutos.setHasFixedSize(true); // Tamanho fixo para otimizar o layout
+        recyclerProdutos.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
         recyclerProdutos.setAdapter( adapter );
     }
 
@@ -65,34 +68,34 @@ public class SPAActivity extends AppCompatActivity {
 
     public void criarProdutosRestaurantes(){
 
-        ProdutosServicosHotel produto = new ProdutosServicosHotel("listaSPA", "22", "Descrição teste");
+        ProdutosServicosHotel produto = new ProdutosServicosHotel("Banho de Sais", "80", "Maravilhoso banho com nossos melhores sais de banho");
         this.listaSPA.add( produto );
 
-        produto = new ProdutosServicosHotel("listaSPA", "32", "Descrição teste");
+        produto = new ProdutosServicosHotel("Hidromassagem", "60", "Massagem dentro da piscina climatizada");
         this.listaSPA.add( produto );
 
-        produto = new ProdutosServicosHotel("listaSPA", "20", "Descrição teste");
+        produto = new ProdutosServicosHotel("Massagem Relaxante", "120", "Massagem para relaxar e eliminar o estresse");
         this.listaSPA.add( produto );
 
-        produto = new ProdutosServicosHotel("Pizza de Hot Dogs", "18", "Descrição teste");
+        produto = new ProdutosServicosHotel("Esfoliação e Hidratação Corporal", "80", "Tratamento facial rejuvenecedor");
         this.listaSPA.add( produto );
 
-        produto = new ProdutosServicosHotel("Risoto de Limão Siciliano", "40", "Descrição teste");
+        produto = new ProdutosServicosHotel("Massagem Com pedras Quentes", "120", "Deliciosa massagem relaxante com tecnica de pedras temperadas");
         this.listaSPA.add( produto );
 
-        produto = new ProdutosServicosHotel("Lasagna alla Bolognesa", "28", "Descrição teste");
+        produto = new ProdutosServicosHotel("Massagem a Quatro Mãos", "28", "Massagem relaxante a Quatro Mãos especializadas");
         this.listaSPA.add( produto );
 
-        produto = new ProdutosServicosHotel("Lasagna Quatro Queijos", "28", "Descrição teste");
+        produto = new ProdutosServicosHotel("Massagem com Final Feliz", "250", "É serio");
         this.listaSPA.add( produto );
 
-        produto = new ProdutosServicosHotel("Coca-cola", "6", "Descrição teste");
+        produto = new ProdutosServicosHotel("Quick Massage", "60", "Massagem rapida para os Atarefados");
         this.listaSPA.add( produto );
 
-        produto = new ProdutosServicosHotel("Sprite", "6", "Descrição teste");
+        produto = new ProdutosServicosHotel("Massagem com Bambu", "120", "Sim! Bambus mesmo.");
         this.listaSPA.add( produto );
 
-        produto = new ProdutosServicosHotel("Fanta", "6", "Descrição teste");
+        produto = new ProdutosServicosHotel("Avaliação Estética", "0", "Faça uma avaliação Gratuita Conosco");
         this.listaSPA.add( produto );
     }
 

@@ -1,6 +1,7 @@
 package com.example.rrsolucoeshotel.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,12 +10,16 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.rrsolucoeshotel.R;
 import com.example.rrsolucoeshotel.adapter.AdapterProdutos;
+import com.example.rrsolucoeshotel.adapter.RecyclerItemClickListener;
 import com.example.rrsolucoeshotel.model.ProdutosServicosHotel;
 
 import java.text.SimpleDateFormat;
@@ -53,7 +58,51 @@ public class RestauranteActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerProdutos.setLayoutManager(layoutManager);
         recyclerProdutos.setHasFixedSize(true); // Tamanho fixo para otimizar o layout
+        recyclerProdutos.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL)); // Adiciona Linhas de Divisão dos itens
         recyclerProdutos.setAdapter( adapter );
+
+        //Eventos Click
+        recyclerProdutos.addOnItemTouchListener(
+                new RecyclerItemClickListener(
+                        getApplicationContext(),
+                        recyclerProdutos,
+                        new RecyclerItemClickListener.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                // Descobrir como buscar o nome da classe.. exemplo
+                                //Filme filme = listaProdutos.get(position); (Filme deveria ser o nome da classe construtora, mas não consigo)
+
+                                Toast.makeText(
+                                        getApplicationContext(),
+                                        "pressionado",
+                                        Toast.LENGTH_SHORT
+                                ).show();
+
+                                // configurar o valor para quando o usuario clicar
+
+                            }
+
+                            @Override
+                            public void onLongItemClick(View view, int position) {
+                                Toast.makeText(
+                                        getApplicationContext(),
+                                        "Clique Longo",
+                                        Toast.LENGTH_SHORT
+                                ).show();
+
+                                // Configurar para quando o usuario fazer o click  Longo
+
+                            }
+
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                            }
+                        }
+                )
+        );
+
+
     }
 
     private void IniciarComponentes() {
@@ -65,34 +114,34 @@ public class RestauranteActivity extends AppCompatActivity {
 
     public void criarProdutosRestaurantes(){
 
-        ProdutosServicosHotel produto = new ProdutosServicosHotel("Strogonoff de Frango", "22", "Descrição teste");
+        ProdutosServicosHotel produto = new ProdutosServicosHotel("Strogonoff de Frango", "22", "Serve 1 pessoa - Acompanha Arroz e Fritas");
         this.listaProdutos.add( produto );
 
-        produto = new ProdutosServicosHotel("Strogonoff de Carne", "32", "Descrição teste");
+        produto = new ProdutosServicosHotel("Strogonoff de Carne", "32", "Serve 1 pessoa - Acompanha Arroz e Fritas");
         this.listaProdutos.add( produto );
 
-        produto = new ProdutosServicosHotel("Pizza de Quatro Queijos", "20", "Descrição teste");
+        produto = new ProdutosServicosHotel("Pizza de Quatro Queijos", "40", "Serve 4 pessoas");
         this.listaProdutos.add( produto );
 
-        produto = new ProdutosServicosHotel("Pizza de Hot Dogs", "18", "Descrição teste");
+        produto = new ProdutosServicosHotel("Pizza de Hot Dogs", "40", "Serve 4 pessoas");
         this.listaProdutos.add( produto );
 
-        produto = new ProdutosServicosHotel("Risoto de Limão Siciliano", "40", "Descrição teste");
+        produto = new ProdutosServicosHotel("Risoto de Limão Siciliano", "40", "Serve 1 pessoa");
         this.listaProdutos.add( produto );
 
-        produto = new ProdutosServicosHotel("Lasagna alla Bolognesa", "28", "Descrição teste");
+        produto = new ProdutosServicosHotel("Lasagna alla Bolognesa", "28", "Serve 2 pessoa\"");
         this.listaProdutos.add( produto );
 
-        produto = new ProdutosServicosHotel("Lasagna Quatro Queijos", "28", "Descrição teste");
+        produto = new ProdutosServicosHotel("Lasagna Quatro Queijos", "28", "Serve 2 pessoa\"");
         this.listaProdutos.add( produto );
 
-        produto = new ProdutosServicosHotel("Coca-cola", "6", "Descrição teste");
+        produto = new ProdutosServicosHotel("Coca-cola", "6", "Lata de Refrigerante - 350ml");
         this.listaProdutos.add( produto );
 
-        produto = new ProdutosServicosHotel("Sprite", "6", "Descrição teste");
+        produto = new ProdutosServicosHotel("Sprite", "6", "Lata de Refrigerante - 350ml");
         this.listaProdutos.add( produto );
 
-        produto = new ProdutosServicosHotel("Fanta", "6", "Descrição teste");
+        produto = new ProdutosServicosHotel("Fanta", "6", "Lata de Refrigerante - 350ml");
         this.listaProdutos.add( produto );
 
     }
