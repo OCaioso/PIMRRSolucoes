@@ -26,7 +26,7 @@ public class GastosAdapter extends RecyclerView.Adapter<GastosAdapter.MinhaViewH
     public MinhaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View itemLista = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.lista_gastos_activitie, parent, false);
+                .inflate(R.layout.adapter_lista_gastos, parent, false);
 
         return new MinhaViewHolder(itemLista);
     }
@@ -55,7 +55,7 @@ public class GastosAdapter extends RecyclerView.Adapter<GastosAdapter.MinhaViewH
 
             dadosDescricao = itemView.findViewById(R.id.txtDescricao);
             dadosValor = itemView.findViewById(R.id.txtValor);
-            dadosQuantidade = itemView.findViewById(R.id.txtQuantidade);
+            dadosQuantidade = itemView.findViewById(R.id.txtQuantidadeAlertDialog);
             dadosVTotal = itemView.findViewById(R.id.txtV_total);
         }
     }

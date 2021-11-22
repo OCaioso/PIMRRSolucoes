@@ -5,12 +5,10 @@ import static com.example.rrsolucoeshotel.activities.ConstantesActivities.MSG_VO
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -38,7 +36,7 @@ public class MenuServicosActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_form_menu_servicos);
+        setContentView(R.layout.activity_menu_servicos);
 
         //esconde barra de ação
         Objects.requireNonNull(getSupportActionBar()).hide();
@@ -177,26 +175,5 @@ public class MenuServicosActivity extends AppCompatActivity {
         barraMsg.setBackgroundTint(Color.WHITE);
         barraMsg.setTextColor(Color.BLACK);
         barraMsg.show();
-    }
-
-    //deixei aque o molde de como criar o AlertDialog para quando for precisar usar nas telas de comprar serviços
-    private void CriaCaixaDialogo() {
-        AlertDialog.Builder caixaDialogo = new AlertDialog.Builder(this);
-        caixaDialogo.setTitle("Alerta!");
-        caixaDialogo.setIcon(R.drawable.ic_feedback);
-        caixaDialogo.setMessage("Tem certeza que deseja voltar para a tela de Login?");
-        caixaDialogo.setPositiveButton("Sim", (dialogInterface, i) -> {
-            Log.w("caixaDialogo", "Clicou sim");
-            //Deslogar();
-        });
-        caixaDialogo.setNegativeButton("Não", (dialogInterface, i) ->
-                Log.w("caixaDialogo", "Clicou não"));
-        caixaDialogo.show();
-    }
-
-    private void Deslogar() {
-        Intent voltarLogin = new Intent(getApplicationContext(), LoginActivity.class);
-        finish();
-        startActivity(voltarLogin);
     }
 }

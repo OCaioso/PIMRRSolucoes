@@ -3,10 +3,12 @@ package com.example.rrsolucoeshotel.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_form_login);
+        setContentView(R.layout.activity_login);
 
         //esconde barra de ação
         Objects.requireNonNull(getSupportActionBar()).hide();
@@ -76,6 +78,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void ClicarAcessar() {
         btnAcessar.setOnClickListener(view -> {
+            //CriaCaixaDialogo();
             progressBar.setVisibility(View.VISIBLE);
 
             String email = edEmail.getText().toString();
@@ -132,4 +135,33 @@ public class LoginActivity extends AppCompatActivity {
         botaoVoltarClicadoDuasVezes = false;
     }
 
+    //teste com caixa dialogo
+    private void CriaCaixaDialogo() {
+        AlertDialog.Builder criaCaixa = new AlertDialog.Builder(this);
+        criaCaixa.setTitle("Confirmação de compra");
+        criaCaixa.setIcon(R.drawable.ic_feedback);
+
+        View caixaView = getLayoutInflater().inflate(R.layout.adapter_alertdialog_confirmar_produto,
+                null);
+        criaCaixa.setView(caixaView);
+
+        criaCaixa.setPositiveButton("Confimar", (dialogInterface, i) -> {
+            Log.w("caixaDialogo", "Clicou confirmar");
+            //Deslogar();
+        });
+        criaCaixa.setNegativeButton("Cancelar", (dialogInterface, i) ->
+                Log.w("caixaDialogo", "Clicou cancelar"));
+
+        EditText nomeProduto =  caixaView.findViewById(R.id.textDescricaoAlertDialog);
+        EditText quantidadeProduto = caixaView.findViewById(R.id.txtQuantidadeAlertDialog);
+
+        Button btnMenosQuantidade = caixaView.findViewById(R.id.btnMenosQuantidadeAlertDialog);
+        btnMenosQuantidade.setOnClickListener(v -> Log.w("Teste botão menor", "apertou botão -"));
+
+        Button btnMaisQuantidade = caixaView.findViewById(R.id.btnMaisQuantidadeAlertDialog);
+        btnMaisQuantidade.setOnClickListener(v -> Log.w("Teste botão maior", "apertou botão +"));
+
+        AlertDialog alertDialog = criaCaixa.create();
+        alertDialog.show();
+    }
 }
