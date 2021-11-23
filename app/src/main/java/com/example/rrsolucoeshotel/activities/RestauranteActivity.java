@@ -6,13 +6,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,7 +31,7 @@ public class RestauranteActivity extends AppCompatActivity {
     private RecyclerView recyclerProdutos;
     private List<ProdutosServicosHotel> listaProdutos = new ArrayList<>();
 
-    private String nomeHospede, cpfHospede;
+    private String nomeHospede, cpfHospede, nomeProduto, valorProduto;
     private int[] quantidade = {1};
 
     @Override
@@ -63,20 +61,20 @@ public class RestauranteActivity extends AppCompatActivity {
 
         //Eventos Click
         recyclerProdutos.addOnItemTouchListener(
-                new RecyclerItemClickListener(
-                        getApplicationContext(),
-                        recyclerProdutos,
+                new RecyclerItemClickListener(getApplicationContext(), recyclerProdutos,
                         new RecyclerItemClickListener.OnItemClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
                                 // Descobrir como buscar o nome da classe.. exemplo
-                                //Filme filme = listaProdutos.get(position); (Filme deveria ser o nome da classe construtora, mas não consigo)
+                                ProdutosServicosHotel produtoClicado = listaProdutos.get(position); //(Filme deveria ser o nome da classe construtora, mas não consigo)
 
-                                Toast.makeText(
-                                        getApplicationContext(),
-                                        "pressionado",
+                                nomeProduto = produtoClicado.getTitulo();
+                                valorProduto = produtoClicado.getValor();
+                                Toast.makeText(getApplicationContext(),
+                                        "pressionado na posição " + position,
                                         Toast.LENGTH_SHORT
                                 ).show();
+                                Log.w("Cliquei produto", "Descricao: "+ nomeProduto + "Valor: " + valorProduto);
 
                                 // configurar o valor para quando o usuario clicar
 
@@ -163,12 +161,12 @@ public class RestauranteActivity extends AppCompatActivity {
 
             //dadosHospede.setNome(nomeHospede);
             //dadosHospede.setsetCPF(cpfHospede);
-            //dadosHospede.setDescricao(FaltaDESCRICAO);
-            //dadosHospede.setValor_Produto(String.valueOf(FaltaVALOR_PRODUTO));
+            //dadosHospede.setDescricao(nomeProduto);
+            //dadosHospede.setValor_Produto(String.valueOf(valorProduto));
             //dadosHospede.setQuantidade(String.valueOf(quantidade[0]));
 
-            //double VALOR_TOTAL = quantidade[0] * VALOR_PRODUTO;
-            //dadosHospede.setValor_Total(String.valueOf(FaltaVALOR_TOTAL));
+            //double totalProduto = quantidade[0] * valorProduto;
+            //dadosHospede.setValor_Total(String.valueOf(totalProduto));
             //dadosHospede.setData(PegaDataAtual());
 
             //RegistrarConsumoHospede(dadosHospede);

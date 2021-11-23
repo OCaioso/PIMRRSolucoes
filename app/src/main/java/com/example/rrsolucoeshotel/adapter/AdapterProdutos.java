@@ -19,7 +19,6 @@ public class AdapterProdutos extends RecyclerView.Adapter<AdapterProdutos.MyView
 
     public AdapterProdutos(List<ProdutosServicosHotel> lista) {
         this.listaProdutos = lista;
-
     }
 
     @NonNull
