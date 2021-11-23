@@ -1,6 +1,7 @@
 package com.example.rrsolucoeshotel.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.rrsolucoeshotel.R;
@@ -54,6 +56,7 @@ public class PiscinaActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerProdutos.setLayoutManager(layoutManager);
         recyclerProdutos.setHasFixedSize(true); // Tamanho fixo para otimizar o layout
+        recyclerProdutos.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
         recyclerProdutos.setAdapter( adapter2 );
     }
 
@@ -66,34 +69,34 @@ public class PiscinaActivity extends AppCompatActivity {
 
     private void criarProdutosPiscina() {
 
-        ProdutosServicosHotel produto = new ProdutosServicosHotel("PISCINA", "22", "Descrição teste");
+        ProdutosServicosHotel produto = new ProdutosServicosHotel("Toalhas Grandes", "10", "Toalhas grandes para banho");
         this.listaPiscina.add( produto );
 
-        produto = new ProdutosServicosHotel("PISCINA", "32", "Descrição teste");
+        produto = new ProdutosServicosHotel("Toalhas Pequenas", "6", "Toalhas pequenas para mãos e rosto");
         this.listaPiscina.add( produto );
 
-        produto = new ProdutosServicosHotel("Pizza de Quatro Queijos", "20", "Descrição teste");
+        produto = new ProdutosServicosHotel("Batata Frita", "22", "Porção de batata frita");
         this.listaPiscina.add( produto );
 
-        produto = new ProdutosServicosHotel("Pizza de Hot Dogs", "18", "Descrição teste");
+        produto = new ProdutosServicosHotel("Mini Pizza", "20", "Consulte sabores");
         this.listaPiscina.add( produto );
 
-        produto = new ProdutosServicosHotel("Risoto de Limão Siciliano", "40", "Descrição teste");
+        produto = new ProdutosServicosHotel("Porção de Frango a Passarinho", "28", "Porção média de frango a passarinho");
         this.listaPiscina.add( produto );
 
-        produto = new ProdutosServicosHotel("Lasagna alla Bolognesa", "28", "Descrição teste");
+        produto = new ProdutosServicosHotel("Cerveja lata", "9", "Cerveja lata tamnho 360ml - Consulte Disponibilidade");
         this.listaPiscina.add( produto );
 
-        produto = new ProdutosServicosHotel("Lasagna Quatro Queijos", "28", "Descrição teste");
+        produto = new ProdutosServicosHotel("Cerveja Garrafa", "15", "Cerveja 600ml - Consulte Dsiponibilidade");
         this.listaPiscina.add( produto );
 
-        produto = new ProdutosServicosHotel("Coca-cola", "6", "Descrição teste");
+        produto = new ProdutosServicosHotel("Coca-cola", "6", "Lata de Refrigerante - 350ml");
         this.listaPiscina.add( produto );
 
-        produto = new ProdutosServicosHotel("Sprite", "6", "Descrição teste");
+        produto = new ProdutosServicosHotel("Sprite", "6", "Lata de Refrigerante - 350ml");
         this.listaPiscina.add( produto );
 
-        produto = new ProdutosServicosHotel("Fanta", "6", "Descrição teste");
+        produto = new ProdutosServicosHotel("Fanta", "6", "Lata de Refrigerante - 350ml");
         this.listaPiscina.add( produto );
     }
 
