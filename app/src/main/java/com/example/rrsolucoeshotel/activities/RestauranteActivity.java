@@ -71,7 +71,8 @@ public class RestauranteActivity extends AppCompatActivity {
                                 nomeProduto = produtoClicado.getTitulo();
                                 valorProduto = produtoClicado.getValor();
                                 Toast.makeText(getApplicationContext(),
-                                        "pressionado na posição " + position,
+                                        "Selecionado " + nomeProduto+
+                                                "Valor: " + valorProduto,
                                         Toast.LENGTH_SHORT
                                 ).show();
                                 Log.w("Cliquei produto", "Descricao: "+ nomeProduto + "Valor: " + valorProduto);

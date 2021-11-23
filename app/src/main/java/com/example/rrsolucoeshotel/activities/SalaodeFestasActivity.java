@@ -9,12 +9,15 @@ import android.app.AlertDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.rrsolucoeshotel.R;
 import com.example.rrsolucoeshotel.adapter.AdapterProdutos;
+import com.example.rrsolucoeshotel.adapter.RecyclerItemClickListener;
 import com.example.rrsolucoeshotel.model.ProdutosServicosHotel;
 
 import java.text.SimpleDateFormat;
@@ -30,6 +33,9 @@ public class SalaodeFestasActivity extends AppCompatActivity {
 
     private String nomeHospede, cpfHospede;
     private int[] quantidade = {1};
+
+    private String nomeProduto;
+    private String valorProduto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +61,52 @@ public class SalaodeFestasActivity extends AppCompatActivity {
         recyclerProdutos.setHasFixedSize(true); // Tamanho fixo para otimizar o layout
         recyclerProdutos.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
         recyclerProdutos.setAdapter( adapter );
+
+        //Eventos Click
+        recyclerProdutos.addOnItemTouchListener(
+                new RecyclerItemClickListener(getApplicationContext(), recyclerProdutos,
+                        new RecyclerItemClickListener.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                // Descobrir como buscar o nome da classe.. exemplo
+                                ProdutosServicosHotel produtoClicado = listaSalaoFestas.get(position); //(Filme deveria ser o nome da classe construtora, mas não consigo)
+
+                                nomeProduto = produtoClicado.getTitulo();
+                                valorProduto = produtoClicado.getValor();
+                                Toast.makeText(getApplicationContext(),
+                                        "Selecionado " + nomeProduto+
+                                                "Valor: " + valorProduto,
+                                        Toast.LENGTH_SHORT
+                                ).show();
+                                Log.w("Cliquei produto", "Descricao: "+ nomeProduto + "Valor: " + valorProduto);
+
+                                // configurar o valor para quando o usuario clicar
+
+                            }
+
+                            @Override
+                            public void onLongItemClick(View view, int position) {
+                                Toast.makeText(
+                                        getApplicationContext(),
+                                        "Clique Longo",
+                                        Toast.LENGTH_SHORT
+                                ).show();
+
+                                // Configurar para quando o usuario fazer o click  Longo
+
+                            }
+
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                            }
+                        }
+                )
+        );
+
+
     }
+
 
     private void IniciarComponentes() {
         nomeHospede = getIntent().getStringExtra("nomeHospede");
