@@ -1,5 +1,7 @@
 package com.example.rrsolucoeshotel.activities;
 
+import static com.example.rrsolucoeshotel.activities.ConstantesActivities.MENSAGENS;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -31,8 +33,6 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressBar progressBar;
 
     boolean botaoVoltarClicadoDuasVezes;
-    private static final String[] MENSAGENS = {"Preencha todos os campos.",
-            "Email não cadastrado.", "Senha incorreta.", "Toque novamente para sair"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -171,7 +171,7 @@ public class LoginActivity extends AppCompatActivity {
         criaCaixa.setNegativeButton("Cancelar",
                 (dialogInterface, i) -> Log.w("Cancelar pedido", PegaDataAtual()));
 
-        TextView descricaoProduto =  caixaView.findViewById(R.id.txtDescricaoAlertDialog);
+        TextView descricaoProduto =  caixaView.findViewById(R.id.txtProdutoServicoAlertDialog);
         TextView quantidadeProduto = caixaView.findViewById(R.id.txtQuantidadeAlertDialog);
 
         SubtraiAQuantidade(quantidade, caixaView, quantidadeProduto);

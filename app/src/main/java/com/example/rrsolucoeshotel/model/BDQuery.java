@@ -191,8 +191,8 @@ public class BDQuery {
             while (resultadoQuery.next()) {
                 DadosHospede dadosHospede = new DadosHospede();
 
-                dadosHospede.setDescricao(resultadoQuery.getString("Descricao"));
-                Log.w("valores do resultset", "Valor_Produto: "+ dadosHospede.getDescricao());
+                dadosHospede.setNomeProduto(resultadoQuery.getString("Descricao"));
+                Log.w("valores do resultset", "Valor_Produto: "+ dadosHospede.getNomeProduto());
 
                 dadosHospede.setValor_Produto(resultadoQuery.getString("Valor_Produto"));
                 Log.w("valores do resultset", "Valor_Produto: "+ dadosHospede.getValor_Produto());
@@ -237,21 +237,21 @@ public class BDQuery {
 
             ppst.setString(1, dados.getNome());
             ppst.setString(2, dados.getCPF());
-            ppst.setString(3, dados.getDescricao());
+            ppst.setString(3, dados.getNomeProduto());
             ppst.setString(4, dados.getValor_Produto());
             ppst.setString(5, dados.getValor_Total());
             ppst.setString(6, dados.getQuantidade());
             ppst.setString(7, dados.getData());
 
-            ppst.executeQuery();
+            ppst.execute();
             ppst.close();
             conexaoBD6.close();
-            Log.w("Query UPDATE", "Executada com sucesso, dados inseridos: " +
-                    dados.getNome() + dados.getCPF() + dados.getDescricao() +
+            Log.w("Query INSERT", "Executada com sucesso, dados inseridos: " +
+                    dados.getNome() + dados.getCPF() + dados.getNomeProduto() +
                     dados.getValor_Produto() + dados.getValor_Total() + dados.getQuantidade() +
                     dados.getData());
         }  catch (SQLException throwables) {
-            Log.w("Query UPDATE", "DEU ERRO");
+            Log.w("Query INSERT", "DEU ERRO");
             throwables.printStackTrace();
         }
     }

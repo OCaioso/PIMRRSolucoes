@@ -1,6 +1,6 @@
 package com.example.rrsolucoeshotel.activities;
 
-import static com.example.rrsolucoeshotel.activities.ConstantesActivities.MSG_VOLTAR;
+import static com.example.rrsolucoeshotel.activities.ConstantesActivities.MENSAGENS;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -171,7 +171,7 @@ public class MenuServicosActivity extends AppCompatActivity {
     }
 
     private void SnackbarMsg(View view) {
-        Snackbar barraMsg = Snackbar.make(view, MSG_VOLTAR, Snackbar.LENGTH_SHORT);
+        Snackbar barraMsg = Snackbar.make(view, MENSAGENS[3], Snackbar.LENGTH_SHORT);
         barraMsg.setBackgroundTint(Color.WHITE);
         barraMsg.setTextColor(Color.BLACK);
         barraMsg.show();

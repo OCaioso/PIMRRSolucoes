@@ -35,7 +35,7 @@ public class GastosAdapter extends RecyclerView.Adapter<GastosAdapter.MinhaViewH
     public void onBindViewHolder(@NonNull MinhaViewHolder holder, int position) {
 
         DadosHospede dadosHospede = listaDadosH.get(position);
-        holder.dadosDescricao.setText(dadosHospede.getDescricao());
+        holder.dadosDescricao.setText(dadosHospede.getNomeProduto());
         holder.dadosValor.setText("R$: " + dadosHospede.getValor_Produto());
         holder.dadosQuantidade.setText(dadosHospede.getQuantidade());
         holder.dadosVTotal.setText("R$: " + dadosHospede.getValor_Total());

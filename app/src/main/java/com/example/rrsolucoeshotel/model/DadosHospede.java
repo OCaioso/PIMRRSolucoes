@@ -2,7 +2,7 @@ package com.example.rrsolucoeshotel.model;
 
 public class DadosHospede {
 
-    private String Nome, CPF, Descricao, Valor_Produto, Valor_Total, Quantidade, Data,
+    private String Nome, CPF, NomeProduto, Valor_Produto, Valor_Total, Quantidade, Data,
             Total_Final_Despesas;
 
     public DadosHospede(){
@@ -25,12 +25,12 @@ public class DadosHospede {
         this.CPF = CPF;
     }
 
-    public String getDescricao() {
-        return Descricao;
+    public String getNomeProduto() {
+        return NomeProduto;
     }
 
-    public void setDescricao(String descricao) {
-        Descricao = descricao;
+    public void setNomeProduto(String nomeProduto) {
+        NomeProduto = nomeProduto;
     }
 
     public String getValor_Produto() {

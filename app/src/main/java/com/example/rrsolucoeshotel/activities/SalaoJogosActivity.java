@@ -1,16 +1,19 @@
 package com.example.rrsolucoeshotel.activities;
 
+import static com.example.rrsolucoeshotel.activities.ConstantesActivities.MENSAGENS;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,7 +21,10 @@ import android.widget.Toast;
 import com.example.rrsolucoeshotel.R;
 import com.example.rrsolucoeshotel.adapter.AdapterProdutos;
 import com.example.rrsolucoeshotel.adapter.RecyclerItemClickListener;
+import com.example.rrsolucoeshotel.model.BDQuery;
+import com.example.rrsolucoeshotel.model.DadosHospede;
 import com.example.rrsolucoeshotel.model.ProdutosServicosHotel;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -31,11 +37,7 @@ public class SalaoJogosActivity extends AppCompatActivity {
     private RecyclerView recyclerProdutos;
     private List<ProdutosServicosHotel> listaSalaojogos= new ArrayList<>();
 
-    private String nomeHospede, cpfHospede;
-    private int[] quantidade = {1};
-
-    private String nomeProduto;
-    private String valorProduto;
+    private String nomeHospede, cpfHospede, nomeProduto, valorProduto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,67 +48,9 @@ public class SalaoJogosActivity extends AppCompatActivity {
         IniciarComponentes();
 
         // Criar listagem de Produtos
-        this.criarProdutosSalaoJogos();
-
-
-        // Configurar Adapter
-        // Esse cara faz a exibição da lista no app - Necessita criar um construtor para classe adapter receber uma lista
-        // Fazer isso dentro do AdapterProdutos.java
-        AdapterProdutos adapter = new AdapterProdutos(listaSalaojogos);
-
-
-        //Configurar RecyclerView
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerProdutos.setLayoutManager(layoutManager);
-        recyclerProdutos.setHasFixedSize(true); // Tamanho fixo para otimizar o layout
-        recyclerProdutos.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
-        recyclerProdutos.setAdapter( adapter );
-
-        //Eventos Click
-        recyclerProdutos.addOnItemTouchListener(
-                new RecyclerItemClickListener(getApplicationContext(), recyclerProdutos,
-                        new RecyclerItemClickListener.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(View view, int position) {
-                                // Descobrir como buscar o nome da classe.. exemplo
-                                ProdutosServicosHotel produtoClicado = listaSalaojogos.get(position); //(Filme deveria ser o nome da classe construtora, mas não consigo)
-
-                                nomeProduto = produtoClicado.getTitulo();
-                                valorProduto = produtoClicado.getValor();
-                                Toast.makeText(getApplicationContext(),
-                                        "Selecionado " + nomeProduto+
-                                                "Valor: " + valorProduto,
-                                        Toast.LENGTH_SHORT
-                                ).show();
-                                Log.w("Cliquei produto", "Descricao: "+ nomeProduto + "Valor: " + valorProduto);
-
-                                // configurar o valor para quando o usuario clicar
-
-                            }
-
-                            @Override
-                            public void onLongItemClick(View view, int position) {
-                                Toast.makeText(
-                                        getApplicationContext(),
-                                        "Clique Longo",
-                                        Toast.LENGTH_SHORT
-                                ).show();
-
-                                // Configurar para quando o usuario fazer o click  Longo
-
-                            }
-
-                            @Override
-                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                            }
-                        }
-                )
-        );
-
-
+        criarProdutosSalaoJogos();
+        ClicarProdutoEspecifico();
     }
-
 
     private void IniciarComponentes() {
         nomeHospede = getIntent().getStringExtra("nomeHospede");
@@ -145,65 +89,109 @@ public class SalaoJogosActivity extends AppCompatActivity {
         this.listaSalaojogos.add( produto );
     }
 
-    //Molde de data caixa de mensagem para quando for confirmar o pedido
-    private void CriaCaixaDialogo() {
+    private void ClicarProdutoEspecifico() {
+        // Configurar Adapter
+        // Esse cara faz a exibição da lista no app - Necessita criar um construtor para classe adapter receber uma lista
+        // Fazer isso dentro do AdapterProdutos.java
+        AdapterProdutos adapter = new AdapterProdutos(listaSalaojogos);
+
+
+        //Configurar RecyclerView
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerProdutos.setLayoutManager(layoutManager);
+        recyclerProdutos.setHasFixedSize(true); // Tamanho fixo para otimizar o layout
+        recyclerProdutos.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
+        recyclerProdutos.setAdapter( adapter );
+
+        //Eventos Click
+        recyclerProdutos.addOnItemTouchListener(
+                new RecyclerItemClickListener(getApplicationContext(), recyclerProdutos,
+                        new RecyclerItemClickListener.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                // Descobrir como buscar o nome da classe.. exemplo
+                                ProdutosServicosHotel produtoClicado = listaSalaojogos.get(position); //(Filme deveria ser o nome da classe construtora, mas não consigo)
+
+                                nomeProduto = produtoClicado.getTitulo();
+                                valorProduto = produtoClicado.getValor();
+                                CriaCaixaDialogo(view, nomeProduto,
+                                        Double.parseDouble(valorProduto));
+                                Log.w("Cliquei produto", "Descricao: "+ nomeProduto + "Valor: " + valorProduto);
+
+                                // configurar o valor para quando o usuario clicar
+
+                            }
+
+                            @Override
+                            public void onLongItemClick(View view, int position) {
+                                Toast.makeText(
+                                        getApplicationContext(),
+                                        "Clique Longo",
+                                        Toast.LENGTH_SHORT
+                                ).show();
+
+                                // Configurar para quando o usuario fazer o click  Longo
+
+                            }
+
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                            }
+                        }
+                )
+        );
+    }
+
+    private void CriaCaixaDialogo(View view, String produto, double valor) {
         int[] quantidade = {1};
 
         AlertDialog.Builder criaCaixa = new AlertDialog.Builder(this);
         criaCaixa.setTitle("Confirmação de compra");
-        criaCaixa.setIcon(R.drawable.ic_feedback);
+        criaCaixa.setIcon(R.drawable.ic_money);
 
         View caixaView = getLayoutInflater().inflate(R.layout.adapter_alertdialog_confirmar_produto,
                 null);
         criaCaixa.setView(caixaView);
 
         criaCaixa.setPositiveButton("Confimar", (dialogInterface, i) -> {
-            //DadosHospede dadosHospede = new DadosHospede();
+            BDQuery bancoDados = new BDQuery();
+            double valorTotal = quantidade[0] * valor;
+            DadosHospede dadosHospede = new DadosHospede();
 
-            //dadosHospede.setNome(nomeHospede);
-            //dadosHospede.setsetCPF(cpfHospede);
-            //dadosHospede.setDescricao(FaltaDESCRICAO);
-            //dadosHospede.setValor_Produto(String.valueOf(FaltaVALOR_PRODUTO));
-            //dadosHospede.setQuantidade(String.valueOf(quantidade[0]));
+            ArmazenaDadosHospede(produto, valor, quantidade[0], valorTotal, dadosHospede);
 
-            //double VALOR_TOTAL = quantidade[0] * VALOR_PRODUTO;
-            //dadosHospede.setValor_Total(String.valueOf(FaltaVALOR_TOTAL));
-            //dadosHospede.setData(PegaDataAtual());
+            bancoDados.RegistrarConsumoHospede(dadosHospede);
 
-            //RegistrarConsumoHospede(dadosHospede);
-            Log.w("Confirmar pedido", PegaDataAtual());
+            SnackbarMsgs(view, 4);
+            Log.w("Confirmar clicado", PegaDataAtual());
         });
-        criaCaixa.setNegativeButton("Cancelar",
-                (dialogInterface, i) -> Log.w("Cancelar pedido", PegaDataAtual()));
 
-        TextView descricaoProduto =  caixaView.findViewById(R.id.txtDescricaoAlertDialog);
+        criaCaixa.setNegativeButton("Cancelar",
+                (dialogInterface, i) -> Log.w("Cancelar clicado", PegaDataAtual()));
+
+        TextView produtoServico =  caixaView.findViewById(R.id.txtProdutoServicoAlertDialog);
+        TextView produtoPreco = caixaView.findViewById(R.id.txtPrecoAlertDialog);
         TextView quantidadeProduto = caixaView.findViewById(R.id.txtQuantidadeAlertDialog);
 
-        SubtraiAQuantidade(quantidade, caixaView, quantidadeProduto);
-        SomaAQuantidade(quantidade, caixaView, quantidadeProduto);
+        produtoServico.setText(produto);
+        produtoPreco.setText("R$ " + valor);
+        SubtraiAQuantidade(valor, quantidade, caixaView, quantidadeProduto, produtoPreco);
+        SomaAQuantidade(valor, quantidade, caixaView, quantidadeProduto, produtoPreco);
 
         AlertDialog caixaDialogo = criaCaixa.create();
         caixaDialogo.show();
     }
 
-    private void SubtraiAQuantidade(int[] quantidade, View caixaView, TextView quantidadeProduto) {
-        Button btnMenosQuantidade = caixaView.findViewById(R.id.btnMenosQuantidadeAlertDialog);
-        btnMenosQuantidade.setOnClickListener(v -> {
-            if(quantidade[0] > 1){
-                quantidade[0]--;
-                quantidadeProduto.setText(String.valueOf(quantidade[0]));
-                Log.w("Teste botão menor", "apertou botão -");
-            }
-        });
-    }
-
-    private void SomaAQuantidade(int[] quantidade, View caixaView, TextView quantidadeProduto) {
-        Button btnMaisQuantidade = caixaView.findViewById(R.id.btnMaisQuantidadeAlertDialog);
-        btnMaisQuantidade.setOnClickListener(v -> {
-            quantidade[0]++;
-            quantidadeProduto.setText(String.valueOf(quantidade[0]));
-            Log.w("Teste botão maior", "apertou botão +");
-        });
+    private void ArmazenaDadosHospede(String produto, double valor, int i1, double valorTotal,
+                                      DadosHospede dadosHospede) {
+        dadosHospede.setNome(nomeHospede);
+        dadosHospede.setCPF(cpfHospede);
+        dadosHospede.setNomeProduto(produto);
+        dadosHospede.setValor_Produto(String.valueOf(valor));
+        dadosHospede.setQuantidade(String.valueOf(i1));
+        dadosHospede.setValor_Total(String.valueOf(valorTotal));
+        dadosHospede.setData(PegaDataAtual());
     }
 
     private String PegaDataAtual() {
@@ -214,5 +202,40 @@ public class SalaoJogosActivity extends AppCompatActivity {
         Log.w("Teste pegar data", "Data sistema: " + dataFormatada );
 
         return dataFormatada;
+    }
+
+    private void SubtraiAQuantidade(double valor, int[] quantidade, View caixaView,
+                                    TextView quantidadeProduto, TextView produtoPreco) {
+        ImageButton btnMenosQuantidade = caixaView.findViewById(R.id.btnMenosQuantidadeAlertDialog);
+        btnMenosQuantidade.setOnClickListener(v -> {
+            if(quantidade[0] > 1){
+                quantidade[0]--;
+                double resultado = valor * quantidade[0];
+
+                quantidadeProduto.setText(String.valueOf(quantidade[0]));
+                produtoPreco.setText("R$ " + resultado);
+                Log.w("Teste botão menor", "apertou botão <");
+            }
+        });
+    }
+
+    private void SomaAQuantidade(double valor, int[] quantidade, View caixaView,
+                                 TextView quantidadeProduto, TextView produtoPreco) {
+        ImageButton btnMaisQuantidade = caixaView.findViewById(R.id.btnMaisQuantidadeAlertDialog);
+        btnMaisQuantidade.setOnClickListener(v -> {
+            quantidade[0]++;
+            double resultado = valor * quantidade[0];
+
+            quantidadeProduto.setText(String.valueOf(quantidade[0]));
+            produtoPreco.setText("R$ " + resultado);
+            Log.w("Teste botão maior", "apertou botão >");
+        });
+    }
+
+    private void SnackbarMsgs(View view, int i) {
+        Snackbar barraMsg = Snackbar.make(view, MENSAGENS[i], Snackbar.LENGTH_SHORT);
+        barraMsg.setBackgroundTint(Color.WHITE);
+        barraMsg.setTextColor(Color.BLACK);
+        barraMsg.show();
     }
 }

@@ -16,7 +16,7 @@ public class ProdutosServicosHotel {
         return tituloPS;
     }
 
-    public void setTituloPS(String tituloPS) {
+    public void setTitulo(String tituloPS) {
         this.tituloPS = tituloPS;
     }
 
@@ -24,7 +24,7 @@ public class ProdutosServicosHotel {
         return valorPS;
     }
 
-    public void setValorPS(String valorPS) {
+    public void setValor(String valorPS) {
         this.valorPS = valorPS;
     }
 
@@ -32,7 +32,7 @@ public class ProdutosServicosHotel {
         return descricaoPS;
     }
 
-    public void setDescricaoPS(String descricaoPS) {
+    public void setDescricao(String descricaoPS) {
         this.descricaoPS = descricaoPS;
     }
 }
