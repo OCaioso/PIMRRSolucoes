@@ -28,19 +28,15 @@ public class RecyclerItemClickListener implements RecyclerView.OnItemTouchListen
     }
 
     @Override
-    public void onTouchEvent(RecyclerView rv, MotionEvent e) {
-
-    }
+    public void onTouchEvent(RecyclerView rv, MotionEvent e) { }
 
     @Override
-    public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
-    }
+    public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) { }
 
     public interface OnItemClickListener extends AdapterView.OnItemClickListener {
-        public void onItemClick(View view, int position);
+        void onItemClick(View view, int position);
 
-        public void onLongItemClick(View view, int position);
+        void onLongItemClick(View view, int position);
     }
 
     public RecyclerItemClickListener(Context context, final RecyclerView recyclerView, OnItemClickListener listener) {
@@ -59,6 +55,5 @@ public class RecyclerItemClickListener implements RecyclerView.OnItemTouchListen
                 }
             }
         });
-
     }
 }

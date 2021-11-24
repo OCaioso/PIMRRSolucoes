@@ -14,4 +14,8 @@
     <string name="consultar">Consultar Gastos</string>
     <string name="despesas">Despesas</string>
     <string name="iconeHotel">Hotel</string>
+    <string name="descricao">Descrição</string>
+    <string name="preco">Preço</string>
+    <string name="qtd">Qtd.</string>
+    <string name="valor_total">V_Total</string>
 </resources>

@@ -16,7 +16,6 @@ import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.rrsolucoeshotel.R;
 import com.example.rrsolucoeshotel.adapter.AdapterProdutos;
@@ -38,17 +37,19 @@ public class SalaoJogosActivity extends AppCompatActivity {
     private List<ProdutosServicosHotel> listaSalaojogos= new ArrayList<>();
 
     private String nomeHospede, cpfHospede, nomeProduto, valorProduto;
+    private final String TITULO_SJOGOS = "Serviços do Salão de Jogos";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_salao_jogos);
 
-
+        setTitle(TITULO_SJOGOS);
         IniciarComponentes();
 
         // Criar listagem de Produtos
         criarProdutosSalaoJogos();
+        CarregarDadosParaLista();
         ClicarProdutoEspecifico();
     }
 
@@ -89,11 +90,11 @@ public class SalaoJogosActivity extends AppCompatActivity {
         this.listaSalaojogos.add( produto );
     }
 
-    private void ClicarProdutoEspecifico() {
+    private void CarregarDadosParaLista() {
         // Configurar Adapter
         // Esse cara faz a exibição da lista no app - Necessita criar um construtor para classe adapter receber uma lista
         // Fazer isso dentro do AdapterProdutos.java
-        AdapterProdutos adapter = new AdapterProdutos(listaSalaojogos);
+        AdapterProdutos adapterSJogos = new AdapterProdutos(listaSalaojogos);
 
 
         //Configurar RecyclerView
@@ -101,8 +102,10 @@ public class SalaoJogosActivity extends AppCompatActivity {
         recyclerProdutos.setLayoutManager(layoutManager);
         recyclerProdutos.setHasFixedSize(true); // Tamanho fixo para otimizar o layout
         recyclerProdutos.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
-        recyclerProdutos.setAdapter( adapter );
+        recyclerProdutos.setAdapter( adapterSJogos );
+    }
 
+    private void ClicarProdutoEspecifico() {
         //Eventos Click
         recyclerProdutos.addOnItemTouchListener(
                 new RecyclerItemClickListener(getApplicationContext(), recyclerProdutos,
@@ -116,28 +119,14 @@ public class SalaoJogosActivity extends AppCompatActivity {
                                 valorProduto = produtoClicado.getValor();
                                 CriaCaixaDialogo(view, nomeProduto,
                                         Double.parseDouble(valorProduto));
-                                Log.w("Cliquei produto", "Descricao: "+ nomeProduto + "Valor: " + valorProduto);
-
-                                // configurar o valor para quando o usuario clicar
-
                             }
 
                             @Override
-                            public void onLongItemClick(View view, int position) {
-                                Toast.makeText(
-                                        getApplicationContext(),
-                                        "Clique Longo",
-                                        Toast.LENGTH_SHORT
-                                ).show();
-
-                                // Configurar para quando o usuario fazer o click  Longo
-
-                            }
+                            public void onLongItemClick(View view, int position) { }
 
                             @Override
-                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                            }
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i,
+                                                    long l) { }
                         }
                 )
         );
@@ -150,7 +139,7 @@ public class SalaoJogosActivity extends AppCompatActivity {
         criaCaixa.setTitle("Confirmação de compra");
         criaCaixa.setIcon(R.drawable.ic_money);
 
-        View caixaView = getLayoutInflater().inflate(R.layout.adapter_alertdialog_confirmar_produto,
+        View caixaView = getLayoutInflater().inflate(R.layout.adapter_alertdialog_confirmar_pedido,
                 null);
         criaCaixa.setView(caixaView);
 
@@ -164,7 +153,6 @@ public class SalaoJogosActivity extends AppCompatActivity {
             bancoDados.RegistrarConsumoHospede(dadosHospede);
 
             SnackbarMsgs(view, 4);
-            Log.w("Confirmar clicado", PegaDataAtual());
         });
 
         criaCaixa.setNegativeButton("Cancelar",
@@ -199,7 +187,6 @@ public class SalaoJogosActivity extends AppCompatActivity {
         SimpleDateFormat formataData = new SimpleDateFormat("yyyy-MM-dd", locale);
         Date data = new Date();
         String dataFormatada = formataData.format(data);
-        Log.w("Teste pegar data", "Data sistema: " + dataFormatada );
 
         return dataFormatada;
     }
@@ -214,7 +201,6 @@ public class SalaoJogosActivity extends AppCompatActivity {
 
                 quantidadeProduto.setText(String.valueOf(quantidade[0]));
                 produtoPreco.setText("R$ " + resultado);
-                Log.w("Teste botão menor", "apertou botão <");
             }
         });
     }
@@ -228,7 +214,6 @@ public class SalaoJogosActivity extends AppCompatActivity {
 
             quantidadeProduto.setText(String.valueOf(quantidade[0]));
             produtoPreco.setText("R$ " + resultado);
-            Log.w("Teste botão maior", "apertou botão >");
         });
     }
 

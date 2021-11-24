@@ -13,10 +13,39 @@
         <entry key="..\:/Users/Pichau/Documents/GitHub/PIMRRSolucoes Rodrigo/app/src/main/res/layout/activity_spaactivity.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Pichau/Documents/GitHub/PIMRRSolucoes Rodrigo/app/src/main/res/layout/activity_turismo.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Pichau/Documents/GitHub/PIMRRSolucoes Rodrigo/app/src/main/res/layout/adapter_lista_produtos.xml" value="0.28072916666666664" />
+        <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1125" />
+        <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/drawable/background.xml" value="0.1125" />
+        <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/drawable/button.xml" value="0.1125" />
+        <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/drawable/button_sair.xml" value="0.1125" />
+        <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/drawable/container_componentes.xml" value="0.2203125" />
+        <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/drawable/edit_text.xml" value="0.1125" />
+        <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/drawable/ic_arrow_left.xml" value="0.1125" />
+        <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/drawable/ic_arrow_right.xml" value="0.1125" />
+        <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/drawable/ic_email.xml" value="0.1125" />
+        <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/drawable/ic_eye.xml" value="0.1125" />
+        <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/drawable/ic_feedback.xml" value="0.1125" />
+        <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1125" />
+        <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/drawable/ic_money.xml" value="0.1125" />
+        <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/layout/activity_atualiza_gasto_hospede.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/layout/activity_form_gastos.xml" value="0.25" />
         <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/layout/activity_form_login.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/layout/activity_form_menu_servicos.xml" value="0.25" />
+        <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/layout/activity_gastos_hospede.xml" value="0.14791666666666667" />
+        <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/layout/activity_menu_servicos.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/layout/activity_piscina.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/layout/activity_restaurante.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/layout/activity_salao_jogos.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/layout/activity_salaode_festas.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/layout/activity_spa.xml" value="0.1" />
+        <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/layout/activity_spaactivity.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/layout/activity_turismo.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/layout/adapter_alertdialog_confirmar_pedido.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/layout/adapter_lista_gastos.xml" value="0.458252427184466" />
+        <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/layout/adapter_lista_produtos.xml" value="0.4738955823293173" />
         <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/layout/lista_gastos_activitie.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/layout/menu_lista_gastos.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/menu/menu_lista_gastos.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/RRSolucoesHotel/app/src/main/res/drawable/background.xml" value="0.2203125" />
         <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/RRSolucoesHotel/app/src/main/res/drawable/button.xml" value="0.2203125" />
         <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/RRSolucoesHotel/app/src/main/res/drawable/button_sair.xml" value="0.2203125" />

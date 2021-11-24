@@ -13,16 +13,17 @@ import com.example.rrsolucoeshotel.model.DadosHospede;
 
 import java.util.List;
 
-public class GastosAdapter extends RecyclerView.Adapter<GastosAdapter.MinhaViewHolder> {
+public class AdapterGastos extends RecyclerView.Adapter<AdapterGastos.MinhaViewHolder> {
 
-    private List<DadosHospede> listaDadosH;
+    private List<DadosHospede> listaDadosHospede;
 
-    public GastosAdapter(List<DadosHospede> lista) {
-        this.listaDadosH = lista;
+    public AdapterGastos(List<DadosHospede> lista) {
+        this.listaDadosHospede = lista;
     }
 
     @NonNull
     @Override
+    // Configura o layout e a view da lista de dados do hospede
     public MinhaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View itemLista = LayoutInflater.from(parent.getContext())
@@ -32,9 +33,11 @@ public class GastosAdapter extends RecyclerView.Adapter<GastosAdapter.MinhaViewH
     }
 
     @Override
+    // Cria a lista com os itens
     public void onBindViewHolder(@NonNull MinhaViewHolder holder, int position) {
 
-        DadosHospede dadosHospede = listaDadosH.get(position);
+        DadosHospede dadosHospede = listaDadosHospede.get(position);
+
         holder.dadosDescricao.setText(dadosHospede.getNomeProduto());
         holder.dadosValor.setText("R$: " + dadosHospede.getValor_Produto());
         holder.dadosQuantidade.setText(dadosHospede.getQuantidade());
@@ -42,8 +45,9 @@ public class GastosAdapter extends RecyclerView.Adapter<GastosAdapter.MinhaViewH
     }
 
     @Override
+    // Cria a contagem de quantos itens vão ser apresentados na tela usando o tamanho da lista
     public int getItemCount() {
-        return this.listaDadosH.size();
+        return this.listaDadosHospede.size();
     }
 
     public class MinhaViewHolder extends RecyclerView.ViewHolder{
@@ -54,8 +58,8 @@ public class GastosAdapter extends RecyclerView.Adapter<GastosAdapter.MinhaViewH
             super(itemView);
 
             dadosDescricao = itemView.findViewById(R.id.txtDescricao);
-            dadosValor = itemView.findViewById(R.id.txtValor);
-            dadosQuantidade = itemView.findViewById(R.id.txtQuantidadeAlertDialog);
+            dadosValor = itemView.findViewById(R.id.txtPreco);
+            dadosQuantidade = itemView.findViewById(R.id.txtQuantidade);
             dadosVTotal = itemView.findViewById(R.id.txtV_total);
         }
     }

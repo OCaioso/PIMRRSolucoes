@@ -2,11 +2,20 @@ package com.example.rrsolucoeshotel.model;
 
 public class DadosHospede {
 
+    private int ID_Consumos;
     private String Nome, CPF, NomeProduto, Valor_Produto, Valor_Total, Quantidade, Data,
             Total_Final_Despesas;
 
     public DadosHospede(){
 
+    }
+
+    public int getID_Consumos() {
+        return ID_Consumos;
+    }
+
+    public void setID_Consumos(int ID_Consumos) {
+        this.ID_Consumos = ID_Consumos;
     }
 
     public String getNome() {

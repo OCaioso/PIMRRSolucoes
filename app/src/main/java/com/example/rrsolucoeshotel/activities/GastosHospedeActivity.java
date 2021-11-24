@@ -13,7 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.rrsolucoeshotel.R;
-import com.example.rrsolucoeshotel.adapter.GastosAdapter;
+import com.example.rrsolucoeshotel.adapter.AdapterGastos;
 import com.example.rrsolucoeshotel.model.BDQuery;
 import com.example.rrsolucoeshotel.model.DadosHospede;
 
@@ -25,8 +25,8 @@ public class GastosHospedeActivity extends AppCompatActivity {
 
     private TextView txtHospede, txtQuarto, txtTotalGastoHospede;
 
-    private RecyclerView recyclerView;
-    private GastosAdapter gastosAdapter;
+    private RecyclerView recyclerGastos;
+    private AdapterGastos adapterGastos;
 
     private List<DadosHospede> listaDadosHospede = new ArrayList<>();
     private DadosHospede dadosHospede = new DadosHospede();
@@ -56,11 +56,11 @@ public class GastosHospedeActivity extends AppCompatActivity {
         txtHospede = findViewById(R.id.txtHospedeGasto);
         txtQuarto = findViewById(R.id.txtQuartoGasto);
         txtTotalGastoHospede = findViewById(R.id.txtTotalGastoHospede);
-        recyclerView = findViewById(R.id.RecyclerView_gastos);
+        recyclerGastos = findViewById(R.id.RecyclerView_gastos);
         botaoVoltarClicadoDuasVezes = false;
     }
 
-    private void AdicionarNomeQuartoATela(DadosHospede d) {
+    private void AdicionarNumeroQuartoATela(DadosHospede d) {
         txtHospede.setText(TXT_HOSPEDE + nomeHospede);
         txtQuarto.setText(TXT_QUARTOS + quartoHospede);
         txtTotalGastoHospede.setText(TXT_TOTAL_GASTO + d.getTotal_Final_Despesas());
@@ -72,17 +72,17 @@ public class GastosHospedeActivity extends AppCompatActivity {
 
         listaDadosHospede = bancoDados.ListarGastosEmDadosHospede(listaDadosHospede, nomeHospede, cpfHospede);
         dadosHospede = listaDadosHospede.get(listaDadosHospede.size()-1);
-        AdicionarNomeQuartoATela(dadosHospede);
+        AdicionarNumeroQuartoATela(dadosHospede);
 
         //Configurar um adapter
-        gastosAdapter = new GastosAdapter(listaDadosHospede);
+        adapterGastos = new AdapterGastos(listaDadosHospede);
 
         //Configurar recyclerview
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(layoutManager);
+        recyclerGastos.setLayoutManager(layoutManager);
         //tamanho fixo
-        recyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(),
+        recyclerGastos.addItemDecoration(new DividerItemDecoration(getApplicationContext(),
                 LinearLayout.HORIZONTAL)); //criando linha
-        recyclerView.setAdapter(gastosAdapter);
+        recyclerGastos.setAdapter(adapterGastos);
     }
 }

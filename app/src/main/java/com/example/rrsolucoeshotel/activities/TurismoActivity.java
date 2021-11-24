@@ -16,7 +16,6 @@ import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.rrsolucoeshotel.R;
 import com.example.rrsolucoeshotel.adapter.AdapterProdutos;
@@ -39,17 +38,19 @@ public class TurismoActivity extends AppCompatActivity {
     private List<ProdutosServicosHotel> listaTurismo= new ArrayList<>();
 
     private String nomeHospede, cpfHospede, nomeProduto, valorProduto;
+    private final String TITULO_TURISMO = "Serviços de Turismo";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_turismo);
 
-
+        setTitle(TITULO_TURISMO);
         IniciarComponentes();
 
         // Criar listagem de Produtos
         criarProdutosTurismo();
+        CarregarDadosParaLista();
         ClicarProdutoEspecifico();
     }
 
@@ -91,11 +92,11 @@ public class TurismoActivity extends AppCompatActivity {
         this.listaTurismo.add( produto );
     }
 
-    private void ClicarProdutoEspecifico() {
+    private void CarregarDadosParaLista() {
         // Configurar Adapter
         // Esse cara faz a exibição da lista no app - Necessita criar um construtor para classe adapter receber uma lista
         // Fazer isso dentro do AdapterProdutos.java
-        AdapterProdutos adapter = new AdapterProdutos(listaTurismo);
+        AdapterProdutos adapterTurismo = new AdapterProdutos(listaTurismo);
 
 
         //Configurar RecyclerView
@@ -103,8 +104,11 @@ public class TurismoActivity extends AppCompatActivity {
         recyclerProdutos.setLayoutManager(layoutManager);
         recyclerProdutos.setHasFixedSize(true); // Tamanho fixo para otimizar o layout
         recyclerProdutos.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
-        recyclerProdutos.setAdapter( adapter );
+        recyclerProdutos.setAdapter( adapterTurismo );
+    }
 
+
+    private void ClicarProdutoEspecifico() {
         //Eventos Click
         recyclerProdutos.addOnItemTouchListener(
                 new RecyclerItemClickListener(getApplicationContext(), recyclerProdutos,
@@ -118,25 +122,14 @@ public class TurismoActivity extends AppCompatActivity {
                                 valorProduto = produtoClicado.getValor();
                                 CriaCaixaDialogo(view, nomeProduto,
                                         Double.parseDouble(valorProduto));
-                                Log.w("Cliquei produto", "Descricao: "+ nomeProduto + "Valor: " + valorProduto);
                             }
 
                             @Override
-                            public void onLongItemClick(View view, int position) {
-                                Toast.makeText(
-                                        getApplicationContext(),
-                                        "Clique Longo",
-                                        Toast.LENGTH_SHORT
-                                ).show();
-
-                                // Configurar para quando o usuario fazer o click  Longo
-
-                            }
+                            public void onLongItemClick(View view, int position) { }
 
                             @Override
-                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                            }
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i,
+                                                    long l) { }
                         }
                 )
         );
@@ -149,7 +142,7 @@ public class TurismoActivity extends AppCompatActivity {
         criaCaixa.setTitle("Confirmação de compra");
         criaCaixa.setIcon(R.drawable.ic_money);
 
-        View caixaView = getLayoutInflater().inflate(R.layout.adapter_alertdialog_confirmar_produto,
+        View caixaView = getLayoutInflater().inflate(R.layout.adapter_alertdialog_confirmar_pedido,
                 null);
         criaCaixa.setView(caixaView);
 
@@ -163,7 +156,6 @@ public class TurismoActivity extends AppCompatActivity {
             bancoDados.RegistrarConsumoHospede(dadosHospede);
 
             SnackbarMsgs(view, 4);
-            Log.w("Confirmar clicado", PegaDataAtual());
         });
 
         criaCaixa.setNegativeButton("Cancelar",
@@ -198,7 +190,6 @@ public class TurismoActivity extends AppCompatActivity {
         SimpleDateFormat formataData = new SimpleDateFormat("yyyy-MM-dd", locale);
         Date data = new Date();
         String dataFormatada = formataData.format(data);
-        Log.w("Teste pegar data", "Data sistema: " + dataFormatada );
 
         return dataFormatada;
     }
@@ -213,7 +204,6 @@ public class TurismoActivity extends AppCompatActivity {
 
                 quantidadeProduto.setText(String.valueOf(quantidade[0]));
                 produtoPreco.setText("R$ " + resultado);
-                Log.w("Teste botão menor", "apertou botão <");
             }
         });
     }
@@ -227,7 +217,6 @@ public class TurismoActivity extends AppCompatActivity {
 
             quantidadeProduto.setText(String.valueOf(quantidade[0]));
             produtoPreco.setText("R$ " + resultado);
-            Log.w("Teste botão maior", "apertou botão >");
         });
     }
 

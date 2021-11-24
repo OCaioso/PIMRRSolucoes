@@ -18,7 +18,7 @@
             android:id="@+id/txtDespesasGasto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="25dp"
             android:text="@string/despesas"
             android:textColor="@color/black"
             android:textSize="30sp"
@@ -46,87 +46,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtHospedeGasto" />
 
-        <View
-            android:id="@+id/containerGastos"
-            style="@style/ContainerComponent"
-            android:layout_height="400dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.4"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txtQuartoGasto" />
-
-        <TableLayout
-            android:id="@+id/tableLayout1"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:stretchColumns="*"
-            android:padding="10dp"
-            app:layout_constraintBottom_toBottomOf="@+id/containerGastos"
-            app:layout_constraintEnd_toEndOf="@+id/containerGastos"
-            app:layout_constraintStart_toStartOf="@+id/containerGastos"
-            app:layout_constraintTop_toTopOf="@+id/containerGastos">
-
-            <TableRow>
-
-                <TextView
-                    android:id="@+id/descricao"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textSize="15dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:text="Descrição" />
-
-                <TextView
-                    android:id="@+id/valor"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textSize="15dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:text="Valor" />
-
-                <TextView
-                    android:id="@+id/quantidade"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textSize="15dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:text="Qtd." />
-
-                <TextView
-                    android:id="@+id/v_total"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textSize="15dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:text="V_Total" />
-
-            </TableRow>
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/RecyclerView_gastos"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
-                app:layout_constraintVertical_bias="0.0" />
+                android:layout_marginTop="50dp"
+                android:padding="10dp"
+                android:background="@color/white"
+                android:radius="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtHospedeGasto" />
 
             <TextView
                 android:id="@+id/txtTotalGastoHospede"
-                android:gravity="center"
-                android:textSize="17dp"
-                android:textColor="@color/black"
-                android:layout_height="wrap_content"
-                android:padding="5dp" />
-
-        </TableLayout>
+                style="@style/TextView"
+                android:padding="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/RecyclerView_gastos" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

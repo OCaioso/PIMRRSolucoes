@@ -176,7 +176,8 @@ public class BDQuery {
         int quantidadeH = 0;
         double vProdutoH = 0, vTotalH = 0, totalFinalDespesas = 0;
 
-        String querySelect = "SELECT c.Descricao, c.Valor_Produto, c.Quantidade "+
+        String querySelect = "SELECT c.ID_Consumos, c.Descricao, c.Valor_Produto, c.Quantidade, " +
+                "c.Data_Consumo " +
                 "FROM Consumos c LEFT JOIN Hospedes h ON c.Nome = h.Nome AND c.CPF = h.CPF ";
         querySelect+= "WHERE c.Nome = ? AND c.CPF = ?;";
 
@@ -191,17 +192,23 @@ public class BDQuery {
             while (resultadoQuery.next()) {
                 DadosHospede dadosHospede = new DadosHospede();
 
+                dadosHospede.setID_Consumos(Integer.parseInt(resultadoQuery.getString(
+                        "ID_Consumos")));
+                Log.w("valores do resultset", "ID_Consumos: "+
+                        dadosHospede.getID_Consumos());
+
                 dadosHospede.setNomeProduto(resultadoQuery.getString("Descricao"));
-                Log.w("valores do resultset", "Valor_Produto: "+ dadosHospede.getNomeProduto());
+                Log.w("valores do resultset", "Valor_Produto: "+
+                        dadosHospede.getNomeProduto());
 
                 dadosHospede.setValor_Produto(resultadoQuery.getString("Valor_Produto"));
-                Log.w("valores do resultset", "Valor_Produto: "+ dadosHospede.getValor_Produto());
-
+                Log.w("valores do resultset", "Valor_Produto: "+
+                        dadosHospede.getValor_Produto());
                 vProdutoH = Double.parseDouble(resultadoQuery.getString("Valor_Produto"));
-                Log.w("valores do resultset", "Valor_Produto: "+ vProdutoH);
 
                 dadosHospede.setQuantidade(resultadoQuery.getString("Quantidade"));
-                Log.w("valores do resultset", "Valor_Produto: "+ dadosHospede.getQuantidade());
+                Log.w("valores do resultset", "Valor_Produto: "+
+                        dadosHospede.getQuantidade());
 
                 quantidadeH = Integer.parseInt(resultadoQuery.getString("Quantidade"));
                 Log.w("valores do resultset", "Quantidade: "+ quantidadeH);
@@ -209,6 +216,8 @@ public class BDQuery {
                 vTotalH = quantidadeH * vProdutoH;
                 dadosHospede.setValor_Total(String.valueOf(vTotalH));
                 Log.w("valores do resultset", "Valor_Total: "+ vTotalH);
+
+                dadosHospede.setData(resultadoQuery.getString("Data_Consumo"));
 
                 totalFinalDespesas += vTotalH;
                 dadosHospede.setTotal_Final_Despesas(String.valueOf(totalFinalDespesas));
@@ -229,7 +238,6 @@ public class BDQuery {
 
         String queryInsert = "INSERT INTO Consumos (Nome, CPF, Descricao, Valor_Produto, "+
                 "Valor_Total, Quantidade, Data_Consumo) ";
-
         queryInsert+= "VALUES (?, ?, ?, ?, ?, ?, ?);";
 
         try {
