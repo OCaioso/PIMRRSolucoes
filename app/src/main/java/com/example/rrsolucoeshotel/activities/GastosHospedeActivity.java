@@ -82,7 +82,8 @@ public class GastosHospedeActivity extends AppCompatActivity {
         recyclerGastos.setLayoutManager(layoutManager);
         //tamanho fixo
         recyclerGastos.addItemDecoration(new DividerItemDecoration(getApplicationContext(),
-                LinearLayout.HORIZONTAL)); //criando linha
+                LinearLayout.HORIZONTAL));
+        recyclerGastos.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL)); // Adiciona Linhas de Divisão dos itens//criando linha
         recyclerGastos.setAdapter(adapterGastos);
     }
 }
