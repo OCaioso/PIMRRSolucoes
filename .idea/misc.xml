@@ -49,11 +49,13 @@
         <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/layout/lista_gastos_activitie.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/layout/menu_lista_gastos.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/xDcai/Documents/GitHub/PIMRRSolucoes/app/src/main/res/menu/menu_lista_gastos.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/RRSolucoesHotel/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2203125" />
         <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/RRSolucoesHotel/app/src/main/res/drawable/background.xml" value="0.2203125" />
         <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/RRSolucoesHotel/app/src/main/res/drawable/button.xml" value="0.2203125" />
         <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/RRSolucoesHotel/app/src/main/res/drawable/button_sair.xml" value="0.2203125" />
         <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/RRSolucoesHotel/app/src/main/res/drawable/container_componentes.xml" value="0.2203125" />
         <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/RRSolucoesHotel/app/src/main/res/drawable/edit_text.xml" value="0.2203125" />
+        <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/RRSolucoesHotel/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2203125" />
         <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/RRSolucoesHotel/app/src/main/res/layout/activity_form_gastos.xml" value="0.25" />
         <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/RRSolucoesHotel/app/src/main/res/layout/activity_form_login.xml" value="0.23958333333333334" />
         <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/RRSolucoesHotel/app/src/main/res/layout/activity_form_menu_servicos.xml" value="0.20416666666666666" />
@@ -67,6 +69,8 @@
         <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/RRSolucoesHotel/app/src/main/res/layout/lista_gastos_activitie.xml" value="0.25" />
         <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/RRSolucoesHotel/app/src/main/res/layout/lista_gastos_activitie2.xml" value="0.33" />
         <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/RRSolucoesHotel/app/src/main/res/layout/lista_gastos_table_activity.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/RRSolucoesHotel/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1125" />
+        <entry key="..\:/Users/xDcai/OneDrive/Documentos/UNIPAndroidStudio/PIM/RRSolucoesHotel/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2203125" />
       </map>
     </option>
   </component>
